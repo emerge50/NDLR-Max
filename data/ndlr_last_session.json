@@ -1,0 +1,578 @@
+{
+  "version": 2,
+  "values": {
+    "root/b_lfo/mm_run": [
+      -1
+    ],
+    "root/b_lfo/mm_l3r": [
+      0.4
+    ],
+    "root/b_lfo/mm_l3s": [
+      0
+    ],
+    "root/b_lfo/mm_l2p": [
+      1
+    ],
+    "root/b_lfo/mm_l2r": [
+      0.4
+    ],
+    "root/b_lfo/mm_l2s": [
+      0
+    ],
+    "root/b_lfo/mm_l1p": [
+      1
+    ],
+    "root/b_lfo/mm_l1r": [
+      0.4
+    ],
+    "root/b_lfo/mm_l1s": [
+      0
+    ],
+    "root/b_lfo/mm_l3pw": [
+      50
+    ],
+    "root/b_lfo/mm_l2pw": [
+      50
+    ],
+    "root/b_lfo/mm_l1pw": [
+      50
+    ],
+    "root/b_lfo/mm_l3p": [
+      1
+    ],
+    "root/b_lfo/mm_l3d": [
+      0
+    ],
+    "root/b_lfo/mm_l2d": [
+      0
+    ],
+    "root/b_lfo/mm_l1d": [
+      0
+    ],
+    "root/b_lfo/mm_l6r": [
+      0.4
+    ],
+    "root/b_lfo/mm_l6s": [
+      0
+    ],
+    "root/b_lfo/mm_l5p": [
+      1
+    ],
+    "root/b_lfo/mm_l5r": [
+      0.4
+    ],
+    "root/b_lfo/mm_l5s": [
+      0
+    ],
+    "root/b_lfo/mm_l4p": [
+      1
+    ],
+    "root/b_lfo/mm_l4r": [
+      0.4
+    ],
+    "root/b_lfo/mm_l4s": [
+      0
+    ],
+    "root/b_lfo/mm_l6pw": [
+      50
+    ],
+    "root/b_lfo/mm_l5pw": [
+      50
+    ],
+    "root/b_lfo/mm_l4pw": [
+      50
+    ],
+    "root/b_lfo/mm_l6p": [
+      1
+    ],
+    "root/b_lfo/mm_l6d": [
+      0
+    ],
+    "root/b_lfo/mm_l5d": [
+      0
+    ],
+    "root/b_lfo/mm_l4d": [
+      0
+    ],
+    "root/b_lfo/mm_l8r": [
+      0.4
+    ],
+    "root/b_lfo/mm_l8s": [
+      0
+    ],
+    "root/b_lfo/mm_l7p": [
+      1
+    ],
+    "root/b_lfo/mm_l7r": [
+      0.4
+    ],
+    "root/b_lfo/mm_l7s": [
+      0
+    ],
+    "root/b_lfo/mm_l8pw": [
+      50
+    ],
+    "root/b_lfo/mm_l7pw": [
+      50
+    ],
+    "root/b_lfo/mm_l8p": [
+      1
+    ],
+    "root/b_lfo/mm_l8d": [
+      0
+    ],
+    "root/b_lfo/mm_l7d": [
+      0
+    ],
+    "root/b_lfo/mm_l3k": [
+      0
+    ],
+    "root/b_lfo/mm_l2k": [
+      0
+    ],
+    "root/b_lfo/mm_l1k": [
+      0
+    ],
+    "root/b_lfo/mm_l6k": [
+      0
+    ],
+    "root/b_lfo/mm_l5k": [
+      0
+    ],
+    "root/b_lfo/mm_l4k": [
+      0
+    ],
+    "root/b_lfo/mm_l8k": [
+      0
+    ],
+    "root/b_lfo/mm_l7k": [
+      0
+    ],
+    "root/obj-9": [
+      0
+    ],
+    "root/obj-35[1]/mm_s8ds": [
+      0
+    ],
+    "root/obj-35[1]/mm_s8sr": [
+      0
+    ],
+    "root/obj-35[1]/mm_s8o": [
+      0
+    ],
+    "root/obj-35[1]/mm_s7ds": [
+      0
+    ],
+    "root/obj-35[1]/mm_s7sr": [
+      0
+    ],
+    "root/obj-35[1]/mm_s7o": [
+      0
+    ],
+    "root/obj-35[1]/mm_s6ds": [
+      0
+    ],
+    "root/obj-35[1]/mm_s6sr": [
+      0
+    ],
+    "root/obj-35[1]/mm_s6o": [
+      0
+    ],
+    "root/obj-35[1]/mm_s5ds": [
+      0
+    ],
+    "root/obj-35[1]/mm_s5sr": [
+      0
+    ],
+    "root/obj-35[1]/mm_s5o": [
+      0
+    ],
+    "root/obj-35[1]/mm_s4ds": [
+      0
+    ],
+    "root/obj-35[1]/mm_s4sr": [
+      0
+    ],
+    "root/obj-35[1]/mm_s4o": [
+      0
+    ],
+    "root/obj-35[1]/mm_s3ds": [
+      0
+    ],
+    "root/obj-35[1]/mm_s3sr": [
+      0
+    ],
+    "root/obj-35[1]/mm_s3o": [
+      0
+    ],
+    "root/obj-35[1]/mm_s2ds": [
+      0
+    ],
+    "root/obj-35[1]/mm_s2sr": [
+      0
+    ],
+    "root/obj-35[1]/mm_s2o": [
+      0
+    ],
+    "root/obj-35[1]/mm_s1ds": [
+      0
+    ],
+    "root/obj-35[1]/mm_s1sr": [
+      0
+    ],
+    "root/obj-35[1]/mm_s1o": [
+      0
+    ],
+    "root/obj-35[1]/mm_s1ds_CC_Ch": [
+      1
+    ],
+    "root/obj-35[1]/mm_s8a": [
+      0
+    ],
+    "root/obj-35[1]/mm_s7a": [
+      0
+    ],
+    "root/obj-35[1]/mm_s6a": [
+      0
+    ],
+    "root/obj-35[1]/mm_s5a": [
+      0
+    ],
+    "root/obj-35[1]/mm_s4a": [
+      0
+    ],
+    "root/obj-35[1]/mm_s3a": [
+      0
+    ],
+    "root/obj-35[1]/mm_s2a": [
+      0
+    ],
+    "root/obj-35[1]/mm_s1a": [
+      0
+    ],
+    "root/obj-35[1]/mm_s2ds_CC_Ch": [
+      1
+    ],
+    "root/obj-35[1]/mm_s3ds_CC_Ch": [
+      1
+    ],
+    "root/obj-35[1]/mm_s4ds_CC_Ch": [
+      1
+    ],
+    "root/obj-35[1]/mm_s5ds_CC_Ch": [
+      1
+    ],
+    "root/obj-35[1]/mm_s6ds_CC_Ch": [
+      1
+    ],
+    "root/obj-35[1]/mm_s7ds_CC_Ch": [
+      1
+    ],
+    "root/obj-35[1]/mm_s8ds_CC_Ch": [
+      1
+    ],
+    "root/obj-35[1]/mm_s1range": [
+      0,
+      100
+    ],
+    "root/obj-35[1]/mm_s2range": [
+      0,
+      100
+    ],
+    "root/obj-35[1]/mm_s3range": [
+      0,
+      100
+    ],
+    "root/obj-35[1]/mm_s4range": [
+      0,
+      100
+    ],
+    "root/obj-35[1]/mm_s5range": [
+      0,
+      100
+    ],
+    "root/obj-35[1]/mm_s6range": [
+      0,
+      100
+    ],
+    "root/obj-35[1]/mm_s7range": [
+      0,
+      100
+    ],
+    "root/obj-35[1]/mm_s8range": [
+      0,
+      100
+    ],
+    "root/obj-35[1]/mm_s1ds_CC": [
+      0
+    ],
+    "root/obj-35[1]/mm_s2ds_CC": [
+      0
+    ],
+    "root/obj-35[1]/mm_s3ds_CC": [
+      0
+    ],
+    "root/obj-35[1]/mm_s4ds_CC": [
+      0
+    ],
+    "root/obj-35[1]/mm_s5ds_CC": [
+      0
+    ],
+    "root/obj-35[1]/mm_s6ds_CC": [
+      0
+    ],
+    "root/obj-35[1]/mm_s7ds_CC": [
+      0
+    ],
+    "root/obj-35[1]/mm_s8ds_CC": [
+      0
+    ],
+    "root/obj-54[1]/pad_quant_menu": [
+      0
+    ],
+    "root/obj-54[1]/pad_chord_invert_toggle": [
+      0
+    ],
+    "root/obj-54[1]/pad_strum_group": [
+      0
+    ],
+    "root/obj-54[1]/pad_strum_on": [
+      0
+    ],
+    "root/obj-54[1]/pad_midi_channel": [
+      1
+    ],
+    "root/obj-54[1]/pad_strum_div_menu": [
+      0
+    ],
+    "root/obj-54[1]/pad_run": [
+      -1
+    ],
+    "root/obj-54[1]/pad_spread_ui": [
+      1
+    ],
+    "root/obj-54[1]/pad_range_ui": [
+      1
+    ],
+    "root/obj-54[1]/pad_humanize_slider": [
+      50
+    ],
+    "root/obj-54[1]/pad_velocity_slider": [
+      64
+    ],
+    "root/obj-47": [
+      0
+    ],
+    "root/obj-48": [
+      0
+    ],
+    "root/obj-57[1]/motif2_accent": [
+      0
+    ],
+    "root/obj-57[1]/motif2_gate": [
+      5
+    ],
+    "root/obj-57[1]/motif2_rhythm": [
+      1
+    ],
+    "root/obj-57[1]/motif2_humanize": [
+      0
+    ],
+    "root/obj-57[1]/motif2_velocity": [
+      0
+    ],
+    "root/obj-57[1]/M2_position": [
+      0
+    ],
+    "root/obj-57[1]/motif2_pattlen": [
+      1
+    ],
+    "root/obj-57[1]/M2_variation": [
+      0
+    ],
+    "root/obj-57[1]/motif2_midi_channel": [
+      1
+    ],
+    "root/obj-57[1]/live.tab": [
+      -1
+    ],
+    "root/obj-57[1]/motif2_velocity_slider": [
+      64
+    ],
+    "root/obj-57[1]/M2_pattern": [
+      0
+    ],
+    "root/obj-58[1]/motif1_accent": [
+      0
+    ],
+    "root/obj-58[1]/motif1_gate": [
+      5
+    ],
+    "root/obj-58[1]/motif1_humanize": [
+      0
+    ],
+    "root/obj-58[1]/motif1_pattlen": [
+      1
+    ],
+    "root/obj-58[1]/motif1_midi_channel": [
+      1
+    ],
+    "root/obj-58[1]/live.tab": [
+      -1
+    ],
+    "root/obj-58[1]/motif1_rhythm": [
+      1
+    ],
+    "root/obj-58[1]/M1_pattern": [
+      0
+    ],
+    "root/obj-58[1]/M1_variation": [
+      0
+    ],
+    "root/obj-58[1]/M1_position": [
+      0
+    ],
+    "root/obj-58[1]/motif1_velocity_slider": [
+      64
+    ],
+    "root/obj-59[1]/drone_trigger_menu": [
+      0
+    ],
+    "root/obj-59[1]/drone_midi_channel": [
+      1
+    ],
+    "root/obj-59[1]/drone_run": [
+      -1
+    ],
+    "root/obj-59[1]/drone_position_tab": [
+      -1
+    ],
+    "root/obj-59[1]/drone_type_tab": [
+      -1
+    ],
+    "root/obj-59[1]/drone_velocity_slider": [
+      64
+    ],
+    "root/obj-150": [
+      0
+    ],
+    "root/obj-160": [
+      0
+    ],
+    "root/obj-171/Patt_editor_M1-M2_sel": [
+      -1
+    ],
+    "root/obj-171/MOTIF1/m1_pattern_type": [
+      0
+    ],
+    "root/obj-171/MOTIF1/m1_pattlen_editor": [
+      8
+    ],
+    "root/obj-171/MOTIF2/m2_pattern_type": [
+      0
+    ],
+    "root/obj-171/MOTIF2/m2_pattlen_editor": [
+      8
+    ],
+    "root/obj-172/live.tab": [
+      -1
+    ],
+    "root/obj-172/live.tab[1]": [
+      0
+    ],
+    "root/obj-172/rhythm_slot_ui": [
+      21
+    ],
+    "root/obj-172/euclid_rotate_ui": [
+      0
+    ],
+    "root/obj-172/euclid_pulses_ui": [
+      4
+    ],
+    "root/obj-179/obj-28": [
+      10
+    ],
+    "root/obj-179/live.tab": [
+      -1
+    ],
+    "root/obj-179/obj-37": [
+      0
+    ],
+    "root/obj-179/live.tab[1]": [
+      0
+    ],
+    "root/b_rotator/rotator_channel": [
+      1
+    ],
+    "root/b_rotator/rotator_enable": [
+      0
+    ],
+    "root/b_interval_mode/interval_channel": [
+      1
+    ],
+    "root/b_interval_mode/interval_enable": [
+      0
+    ],
+    "root/b_perlin_noise/perlin_resolution_slider": [
+      45
+    ],
+    "root/b_perlin_noise/live.tab[1]": [
+      -1
+    ],
+    "root/b_perlin_noise/perlin_persistence_slider": [
+      51
+    ],
+    "root/b_perlin_noise/perlin_ruff_slider": [
+      51
+    ],
+    "root/b_perlin_noise/perlin_spacing_slider": [
+      50
+    ],
+    "root/b_perlin_noise/perlin_zoom_slider": [
+      51
+    ],
+    "root/b_perlin_noise/m_perlin_mod": [
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      100,
+      8,
+      8,
+      7,
+      7,
+      1,
+      1,
+      0,
+      0,
+      10
+    ],
+    "root/b_perlin_noise/perlin_seed_slider": [
+      500
+    ],
+    "root/b_perlin_noise/perlin_motif2_enabled": [
+      0
+    ],
+    "root/b_perlin_noise/perlin_motif1_enabled": [
+      0
+    ],
+    "root/b_perlin_noise/m1_pattern_type": [
+      0
+    ],
+    "root/b_perlin_noise/m1_pattern_type[1]": [
+      0
+    ],
+    "root/b_perlin_noise/perlin_brightness_slider": [
+      50
+    ],
+    "root/obj-47[1]": [
+      0
+    ],
+    "root/obj-47[2]": [
+      0
+    ]
+  }
+}

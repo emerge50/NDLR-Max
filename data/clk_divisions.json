@@ -1,0 +1,25 @@
+{
+  "divisions": [
+    { "id": 1,  "label": "1nd",   "ticks": 576 },
+    { "id": 2,  "label": "1n",    "ticks": 384 },
+    { "id": 3,  "label": "1nt",   "ticks": 256 },
+    { "id": 4,  "label": "2nd",   "ticks": 288 },
+    { "id": 5,  "label": "2n",    "ticks": 192 },
+    { "id": 6,  "label": "2nt",   "ticks": 128 },
+    { "id": 7,  "label": "4nd",   "ticks": 144 },
+    { "id": 8,  "label": "4n",    "ticks": 96 },
+    { "id": 9,  "label": "4nt",   "ticks": 64 },
+    { "id": 10, "label": "8nd",   "ticks": 72 },
+    { "id": 11, "label": "8n",    "ticks": 48 },
+    { "id": 12, "label": "8nt",   "ticks": 32 },
+    { "id": 13, "label": "16nd",  "ticks": 36 },
+    { "id": 14, "label": "16n",   "ticks": 24 },
+    { "id": 15, "label": "16nt",  "ticks": 16 },
+    { "id": 16, "label": "32nd",  "ticks": 18 },
+    { "id": 17, "label": "32n",   "ticks": 12 },
+    { "id": 18, "label": "32nt",  "ticks": 8 },
+    { "id": 19, "label": "64nd",  "ticks": 9 },
+    { "id": 20, "label": "64n",   "ticks": 6 },
+    { "id": 21, "label": "128n",  "ticks": 3 }
+  ]
+}
