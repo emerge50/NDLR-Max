@@ -1,0 +1,12 @@
+.DS_Store
+**/.DS_Store
+
+# Fichiers temporaires et éléments supprimés par Max
+tmp/
+_DeletedItems/
+.juce_staging/
+*.maxbak
+
+# Builds et applications autonomes
+NDLR.app/
+*.mxf

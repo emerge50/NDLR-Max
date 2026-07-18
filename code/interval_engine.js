@@ -2,6 +2,8 @@ autowatch = 1;
 inlets = 1;
 outlets = 1;
 
+include("scaler_scale_data.js");
+
 var enabled = false, midiChannel = 16;
 var keyIndex = 0, modeIndex = 0;
 var scaleClasses = [0,2,4,5,7,9,11];
@@ -10,15 +12,9 @@ var lowNote = 36, highNote = 84, octaveOffset = 0, followChord = false;
 var chordRoot = 60;
 var status = 0, data = [];
 var KEY_MIDI = [0,7,2,9,4,11,6,1,8,3,10,5];
-var MODES = [
- [0,2,4,5,7,9,11],[0,2,3,5,7,9,10],[0,1,3,5,7,8,10],
- [0,2,4,6,7,9,11],[0,2,4,5,7,9,10],[0,2,3,5,7,8,10],
- [0,1,3,5,6,8,10],[0,2,3,6,7,8,10],[0,2,3,5,7,8,11],
- [0,3,5,7,10],[0,2,4,6,8,10],[0,2],[0,4],[0,5],[0,9]
-];
 
 function rebuildScale() {
- var root = KEY_MIDI[Math.max(0,Math.min(11,keyIndex))], ints = MODES[modeIndex] || MODES[0];
+ var root = KEY_MIDI[Math.max(0,Math.min(11,keyIndex))], ints = scalerScaleIntervals(modeIndex);
  scaleClasses=[]; for(var i=0;i<ints.length;i++) scaleClasses.push((root+ints[i])%12);
 }
 function scaleNotes() {
@@ -53,7 +49,8 @@ function noteOff(note){if(note===activeTrigger){stopNote();activeTrigger=-1;}}
 function enable(v){enabled=v?true:false;if(!enabled)stopNote();}
 function channel(v){stopNote();midiChannel=Math.max(1,Math.min(16,Math.round(v)));}
 function key(v){keyIndex=Math.max(0,Math.min(11,Math.round(v)));rebuildScale();}
-function mode(v){modeIndex=Math.max(0,Math.min(14,Math.round(v)));rebuildScale();}
+function mode(v){modeIndex=Math.max(0,Math.min(SCALER_SCALE_COUNT-1,Math.round(v)));rebuildScale();}
+function scale_index(v){mode(v);}
 function chord(){var a=arrayfromargs(arguments);if(a.length){chordRoot=Number(a[0]);if(followChord)currentNote=chordRoot;}}
 function allnotesoff(){stopNote();}
 function reset(){stopNote();currentNote=followChord?chordRoot:62;octaveOffset=0;}
