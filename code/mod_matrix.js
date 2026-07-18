@@ -121,11 +121,11 @@ var SHAPE_NAMES = ['sine','triangle','ramp','saw','square','pulse','random'];
 // Synchronisés avec les umenus du Pattern Editor (b_motif_1.maxpat obj-22).
 var PATT_NAMES = [
     // Presets fixes 1-20
-    'Montée-descente','Sauts de tierces','Pivot sur racine','Zigzag montant',
-    'Bourdon aigu','Cascade','Impairs-pairs','Alberti',
-    "Escalier d'accord",'Basse + accord','Echo doublé','Miroir',
-    'Clave','Rythmique','Pentatonique feel','Paires alternées',
-    'Spirale','Marches liées','Sauts de quarte','Rotatif',
+    'Up-Down','Third Leaps','Root Pivot','Ascending Zigzag',
+    'High Drone','Cascade','Odd-Even','Alberti',
+    "Chord Staircase",'Bass + Chord','Double Echo','Mirror',
+    'Clave','Rhythmic','Pentatonic Feel','Alternating Pairs',
+    'Spiral','Linked Steps','Fourth Leaps','Rotating',
     // Slots utilisateur 21-38
     'User 21','User 22','User 23','User 24','User 25','User 26',
     'User 27','User 28','User 29','User 30','User 31','User 32',

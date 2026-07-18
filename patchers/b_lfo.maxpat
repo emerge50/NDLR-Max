@@ -9,7 +9,7 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 199.0, 183.0, 841.0, 577.0 ],
+        "rect": [ 45.0, 114.0, 749.0, 740.0 ],
         "openinpresentation": 1,
         "boxes": [
             {
@@ -24,7 +24,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 249.5, 197.0, 16.0, 16.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 245.0, 194.0, 16.0, 16.0 ],
+                    "presentation_rect": [ 245.0, 193.0, 22.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -52,7 +52,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 249.5, 219.0, 16.0, 16.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 245.0, 216.0, 16.0, 16.0 ],
+                    "presentation_rect": [ 245.0, 215.0, 22.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -80,7 +80,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 251.0, 135.0, 16.0, 16.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 245.0, 129.0, 16.0, 16.0 ],
+                    "presentation_rect": [ 245.0, 127.0, 22.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -108,7 +108,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 251.0, 157.0, 16.0, 16.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 245.0, 151.0, 16.0, 16.0 ],
+                    "presentation_rect": [ 245.0, 149.0, 22.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -136,7 +136,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 251.0, 179.0, 16.0, 16.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 245.0, 173.0, 16.0, 16.0 ],
+                    "presentation_rect": [ 245.0, 171.0, 22.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -184,7 +184,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 198.0, 385.0, 16.0, 16.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 245.0, 63.0, 16.0, 16.0 ],
+                    "presentation_rect": [ 245.0, 61.0, 22.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -212,7 +212,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 198.0, 407.0, 16.0, 16.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 245.0, 85.0, 16.0, 16.0 ],
+                    "presentation_rect": [ 245.0, 83.0, 22.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -240,7 +240,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 198.0, 429.0, 16.0, 16.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 245.0, 107.0, 16.0, 16.0 ],
+                    "presentation_rect": [ 245.0, 105.0, 22.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -295,7 +295,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 170.5, 195.0, 45.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 167.0, 192.0, 76.0, 22.0 ],
+                    "presentation_rect": [ 167.0, 193.0, 76.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -327,7 +327,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 170.5, 217.0, 45.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 167.0, 214.0, 76.0, 22.0 ],
+                    "presentation_rect": [ 167.0, 215.0, 76.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -355,7 +355,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 270.5, 217.0, 36.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 271.0, 214.0, 36.0, 22.0 ],
+                    "presentation_rect": [ 271.0, 215.0, 36.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -384,7 +384,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 305.5, 196.0, 100.0, 20.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 306.0, 193.0, 89.5, 20.0 ],
+                    "presentation_rect": [ 306.0, 194.0, 89.5, 20.0 ],
                     "varname": "mm_l7pw"
                 }
             },
@@ -401,7 +401,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 305.5, 218.0, 100.0, 20.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 306.0, 215.0, 89.5, 20.0 ],
+                    "presentation_rect": [ 306.0, 216.0, 89.5, 20.0 ],
                     "varname": "mm_l8pw"
                 }
             },
@@ -414,7 +414,7 @@
                     "numoutlets": 0,
                     "patching_rect": [ 10.5, 198.0, 36.0, 18.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 11.0, 195.0, 36.0, 18.0 ],
+                    "presentation_rect": [ 11.0, 195.14285714285717, 36.0, 18.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -442,7 +442,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 47.5, 195.0, 96.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 48.0, 192.0, 120.0, 22.0 ],
+                    "presentation_rect": [ 48.0, 193.0, 120.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -502,7 +502,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 270.5, 195.0, 36.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 271.0, 192.0, 36.0, 22.0 ],
+                    "presentation_rect": [ 271.0, 193.0, 36.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -527,7 +527,7 @@
                     "numoutlets": 0,
                     "patching_rect": [ 10.5, 220.0, 36.0, 18.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 11.0, 217.0, 36.0, 18.0 ],
+                    "presentation_rect": [ 11.0, 217.00000000000003, 36.0, 18.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -555,7 +555,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 47.5, 217.0, 96.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 48.0, 214.0, 120.0, 22.0 ],
+                    "presentation_rect": [ 48.0, 215.0, 120.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -787,7 +787,7 @@
                     "numoutlets": 0,
                     "patching_rect": [ 12.0, 136.0, 36.0, 18.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 11.0, 130.0, 36.0, 18.0 ],
+                    "presentation_rect": [ 11.0, 129.57142857142858, 36.0, 18.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -900,7 +900,7 @@
                     "numoutlets": 0,
                     "patching_rect": [ 12.0, 158.0, 36.0, 18.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 11.0, 152.0, 36.0, 18.0 ],
+                    "presentation_rect": [ 11.0, 151.42857142857144, 36.0, 18.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -1013,7 +1013,7 @@
                     "numoutlets": 0,
                     "patching_rect": [ 12.0, 180.0, 36.0, 18.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 11.0, 174.0, 36.0, 18.0 ],
+                    "presentation_rect": [ 11.0, 173.2857142857143, 36.0, 18.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -1373,7 +1373,7 @@
                     "bgfillcolor_proportion": 0.39,
                     "bgfillcolor_type": "color",
                     "id": "mm_l1s",
-                    "items": [ "sine", ",", "triangle", ",", "ramp", ",", "saw", ",", "square", ",", "pulse", ",", "random", ",", "Montée-descente", ",", "Sauts de tierces", ",", "Pivot sur racine", ",", "Zigzag montant", ",", "Bourdon aigu", ",", "Cascade", ",", "Impairs-pairs", ",", "Alberti", ",", "Escalier d'accord", ",", "Basse + accord", ",", "Echo doublé", ",", "Miroir", ",", "Clave", ",", "Rythmique", ",", "Pentatonique feel", ",", "Paires alternées", ",", "Spirale", ",", "Marches liées", ",", "Sauts de quarte", ",", "Rotatif", ",", "User 21", ",", "User 22", ",", "User 23", ",", "User 24", ",", "User 25", ",", "User 26", ",", "User 27", ",", "User 28", ",", "User 29", ",", "User 30", ",", "User 31", ",", "User 32", ",", "User 33", ",", "User 34", ",", "User 35", ",", "User 36", ",", "User 37", ",", "User 38", ",", "Perlin M1", ",", "Perlin M2" ],
+                    "items": [ "sine", ",", "triangle", ",", "ramp", ",", "saw", ",", "square", ",", "pulse", ",", "random", ",", "Up-Down", ",", "Third Leaps", ",", "Root Pivot", ",", "Ascending Zigzag", ",", "High Drone", ",", "Cascade", ",", "Odd-Even", ",", "Alberti", ",", "Chord Staircase", ",", "Bass + Chord", ",", "Double Echo", ",", "Mirror", ",", "Clave", ",", "Rhythmic", ",", "Pentatonic Feel", ",", "Alternating Pairs", ",", "Spiral", ",", "Linked Steps", ",", "Fourth Leaps", ",", "Rotating", ",", "User 21", ",", "User 22", ",", "User 23", ",", "User 24", ",", "User 25", ",", "User 26", ",", "User 27", ",", "User 28", ",", "User 29", ",", "User 30", ",", "User 31", ",", "User 32", ",", "User 33", ",", "User 34", ",", "User 35", ",", "User 36", ",", "User 37", ",", "User 38", ",", "Perlin M1", ",", "Perlin M2" ],
                     "maxclass": "umenu",
                     "numinlets": 1,
                     "numoutlets": 3,
@@ -1510,7 +1510,7 @@
                     "numoutlets": 0,
                     "patching_rect": [ 12.0, 408.0, 36.0, 18.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 11.0, 86.0, 36.0, 18.0 ],
+                    "presentation_rect": [ 11.0, 85.85714285714286, 36.0, 18.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -1530,7 +1530,7 @@
                     "bgfillcolor_proportion": 0.39,
                     "bgfillcolor_type": "color",
                     "id": "mm_l2s",
-                    "items": [ "sine", ",", "triangle", ",", "ramp", ",", "saw", ",", "square", ",", "pulse", ",", "random", ",", "Montée-descente", ",", "Sauts de tierces", ",", "Pivot sur racine", ",", "Zigzag montant", ",", "Bourdon aigu", ",", "Cascade", ",", "Impairs-pairs", ",", "Alberti", ",", "Escalier d'accord", ",", "Basse + accord", ",", "Echo doublé", ",", "Miroir", ",", "Clave", ",", "Rythmique", ",", "Pentatonique feel", ",", "Paires alternées", ",", "Spirale", ",", "Marches liées", ",", "Sauts de quarte", ",", "Rotatif", ",", "User 21", ",", "User 22", ",", "User 23", ",", "User 24", ",", "User 25", ",", "User 26", ",", "User 27", ",", "User 28", ",", "User 29", ",", "User 30", ",", "User 31", ",", "User 32", ",", "User 33", ",", "User 34", ",", "User 35", ",", "User 36", ",", "User 37", ",", "User 38", ",", "Perlin M1", ",", "Perlin M2" ],
+                    "items": [ "sine", ",", "triangle", ",", "ramp", ",", "saw", ",", "square", ",", "pulse", ",", "random", ",", "Up-Down", ",", "Third Leaps", ",", "Root Pivot", ",", "Ascending Zigzag", ",", "High Drone", ",", "Cascade", ",", "Odd-Even", ",", "Alberti", ",", "Chord Staircase", ",", "Bass + Chord", ",", "Double Echo", ",", "Mirror", ",", "Clave", ",", "Rhythmic", ",", "Pentatonic Feel", ",", "Alternating Pairs", ",", "Spiral", ",", "Linked Steps", ",", "Fourth Leaps", ",", "Rotating", ",", "User 21", ",", "User 22", ",", "User 23", ",", "User 24", ",", "User 25", ",", "User 26", ",", "User 27", ",", "User 28", ",", "User 29", ",", "User 30", ",", "User 31", ",", "User 32", ",", "User 33", ",", "User 34", ",", "User 35", ",", "User 36", ",", "User 37", ",", "User 38", ",", "Perlin M1", ",", "Perlin M2" ],
                     "maxclass": "umenu",
                     "numinlets": 1,
                     "numoutlets": 3,
@@ -1667,7 +1667,7 @@
                     "numoutlets": 0,
                     "patching_rect": [ 12.0, 430.0, 36.0, 18.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 11.0, 108.0, 36.0, 18.0 ],
+                    "presentation_rect": [ 11.0, 107.71428571428572, 36.0, 18.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -1687,7 +1687,7 @@
                     "bgfillcolor_proportion": 0.39,
                     "bgfillcolor_type": "color",
                     "id": "mm_l3s",
-                    "items": [ "sine", ",", "triangle", ",", "ramp", ",", "saw", ",", "square", ",", "pulse", ",", "random", ",", "Montée-descente", ",", "Sauts de tierces", ",", "Pivot sur racine", ",", "Zigzag montant", ",", "Bourdon aigu", ",", "Cascade", ",", "Impairs-pairs", ",", "Alberti", ",", "Escalier d'accord", ",", "Basse + accord", ",", "Echo doublé", ",", "Miroir", ",", "Clave", ",", "Rythmique", ",", "Pentatonique feel", ",", "Paires alternées", ",", "Spirale", ",", "Marches liées", ",", "Sauts de quarte", ",", "Rotatif", ",", "User 21", ",", "User 22", ",", "User 23", ",", "User 24", ",", "User 25", ",", "User 26", ",", "User 27", ",", "User 28", ",", "User 29", ",", "User 30", ",", "User 31", ",", "User 32", ",", "User 33", ",", "User 34", ",", "User 35", ",", "User 36", ",", "User 37", ",", "User 38", ",", "Perlin M1", ",", "Perlin M2" ],
+                    "items": [ "sine", ",", "triangle", ",", "ramp", ",", "saw", ",", "square", ",", "pulse", ",", "random", ",", "Up-Down", ",", "Third Leaps", ",", "Root Pivot", ",", "Ascending Zigzag", ",", "High Drone", ",", "Cascade", ",", "Odd-Even", ",", "Alberti", ",", "Chord Staircase", ",", "Bass + Chord", ",", "Double Echo", ",", "Mirror", ",", "Clave", ",", "Rhythmic", ",", "Pentatonic Feel", ",", "Alternating Pairs", ",", "Spiral", ",", "Linked Steps", ",", "Fourth Leaps", ",", "Rotating", ",", "User 21", ",", "User 22", ",", "User 23", ",", "User 24", ",", "User 25", ",", "User 26", ",", "User 27", ",", "User 28", ",", "User 29", ",", "User 30", ",", "User 31", ",", "User 32", ",", "User 33", ",", "User 34", ",", "User 35", ",", "User 36", ",", "User 37", ",", "User 38", ",", "Perlin M1", ",", "Perlin M2" ],
                     "maxclass": "umenu",
                     "numinlets": 1,
                     "numoutlets": 3,
