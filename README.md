@@ -3,7 +3,7 @@
 Adaptation du séquenceur NDLR réalisée dans Max, avec génération harmonique,
 Pad, Drone, Motifs, Voice Grouping, inversions et matrice de modulation.
 
-![NDLR Max](https://github.com/user-attachments/assets/5aebefb7-a347-4a82-bf6c-ea157c3d3176)
+<img width="1257" height="888" alt="Capture d’écran 2026-07-18 à 10 36 48" src="https://github.com/user-attachments/assets/99b5c84c-1955-4a55-9fff-26105b5b0a77" />
 
 ## Ouvrir le projet
 
