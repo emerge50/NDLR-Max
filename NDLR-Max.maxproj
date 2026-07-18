@@ -1,18 +1,16 @@
 {
     "amxdtype": 0,
     "autolocalize": 0,
-    "autoorganize": 0,
+    "autoorganize": 1,
     "contents": {
         "patchers": {
+            "ndlr_main.maxpat": {
+                "kind": "patcher",
+                "local": 1,
+                "toplevel": 1,
+                "disclosed": 0
+            },
             "b_drone.maxpat": {
-                "kind": "patcher",
-                "local": 1
-            },
-            "b_help_interval_mode.maxpat": {
-                "kind": "patcher",
-                "local": 1
-            },
-            "b_help_rhythm_editor.maxpat": {
                 "kind": "patcher",
                 "local": 1
             },
@@ -68,11 +66,13 @@
                 "kind": "patcher",
                 "local": 1
             },
-            "ndlr_main.maxpat": {
+            "b_help_rhythm_editor.maxpat": {
                 "kind": "patcher",
-                "local": 1,
-                "toplevel": 1,
-                "disclosed": 0
+                "local": 1
+            },
+            "b_help_interval_mode.maxpat": {
+                "kind": "patcher",
+                "local": 1
             }
         },
         "media": {
@@ -84,21 +84,29 @@
                 "kind": "vectorimagefile",
                 "local": 1
             },
-            "Midi_plug.svg": {
+            "Reload.svg": {
                 "kind": "vectorimagefile",
                 "local": 1
             },
-            "Reload.svg": {
+            "Midi_plug.svg": {
                 "kind": "vectorimagefile",
                 "local": 1
             }
         },
         "code": {
+            "Panic_jsui.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "chord_builder.js": {
+                "kind": "javascript",
+                "local": 1
+            },
             "drone_builder.js": {
                 "kind": "javascript",
                 "local": 1
             },
-            "slider_1-127.js": {
+            "harmony_midi_router.js": {
                 "kind": "javascript",
                 "local": 1
             },
@@ -106,11 +114,11 @@
                 "kind": "javascript",
                 "local": 1
             },
-            "lfo_ui_router.js": {
+            "key_degree_jsui.js": {
                 "kind": "javascript",
                 "local": 1
             },
-            "slider_0-100.js": {
+            "lfo_ui_router.js": {
                 "kind": "javascript",
                 "local": 1
             },
@@ -118,11 +126,15 @@
                 "kind": "javascript",
                 "local": 1
             },
-            "rslider.js": {
+            "motif_builder.js": {
                 "kind": "javascript",
                 "local": 1
             },
-            "motif_builder.js": {
+            "ndlr_perlin_jsui.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "ndlr_rhythm_orbit.js": {
                 "kind": "javascript",
                 "local": 1
             },
@@ -146,11 +158,7 @@
                 "kind": "javascript",
                 "local": 1
             },
-            "ndlr_perlin_jsui.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "ndlr_rhythm_orbit.js": {
+            "reload_button_jsui.js": {
                 "kind": "javascript",
                 "local": 1
             },
@@ -162,27 +170,23 @@
                 "kind": "javascript",
                 "local": 1
             },
-            "Panic_jsui.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "chord_builder.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "harmony_midi_router.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "key_degree_jsui.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "reload_button_jsui.js": {
+            "rslider.js": {
                 "kind": "javascript",
                 "local": 1
             },
             "scale_builder.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "scaler_scale_data.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "slider_0-100.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "slider_1-127.js": {
                 "kind": "javascript",
                 "local": 1
             },
@@ -196,18 +200,6 @@
             }
         },
         "data": {
-            "clk_divisions.json": {
-                "kind": "json",
-                "local": 1
-            },
-            "ndlr_motif1_library.json": {
-                "kind": "json",
-                "local": 1
-            },
-            "ndlr_motif2_library.json": {
-                "kind": "json",
-                "local": 1
-            },
             "ndlr_shared_pattern_library.json": {
                 "kind": "json",
                 "local": 1
@@ -215,29 +207,44 @@
             "ndlr_shared_rhythm_library.json": {
                 "kind": "json",
                 "local": 1
+            },
+            "ndlr_motif2_library.json": {
+                "kind": "json",
+                "local": 1
+            },
+            "ndlr_motif1_library.json": {
+                "kind": "json",
+                "local": 1
+            },
+            "ndlr_last_session.json": {
+                "kind": "json",
+                "local": 1
+            },
+            "clk_divisions.json": {
+                "kind": "json",
+                "local": 1
             }
         }
     },
-    "creationdate": 3865446781,
-    "detailsvisible": 1,
+    "creationdate": 3867215288,
+    "detailsvisible": 0,
     "devpath": ".",
     "devpathtype": 0,
     "hideprojectwindow": 0,
     "includepackages": 0,
     "layout": {    },
-    "modificationdate": 3867142082,
-    "name": "ndlr_max",
+    "modificationdate": 3867215418,
+    "name": "NDLR-Max",
     "readonly": 0,
     "searchpath": {    },
     "showdependencies": 1,
-    "sortmode": 1,
+    "sortmode": 0,
     "version": 1,
     "viewmode": 0,
-    "viewrect": [ 4.0, 122.0, 360.0, 620.0 ],
+    "viewrect": [ 25.0, 114.0, 300.0, 500.0 ],
     "category_disclosure": {
-        "data": 0,
         "code": 0,
-        "patchers": 0,
+        "data": 0,
         "media": 0
     }
 }

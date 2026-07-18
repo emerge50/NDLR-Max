@@ -9,7 +9,7 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 76.0, 212.0, 1189.0, 792.0 ],
+        "rect": [ 30.0, 81.0, 1189.0, 792.0 ],
         "openinpresentation": 1,
         "statusbarvisible": 0,
         "toolbarvisible": 0,
@@ -81,7 +81,7 @@
             },
             {
                 "box": {
-                    "filename": "reload_button_jsui.js",
+                    "filename": "Patcher:/../code/reload_button_jsui.js",
                     "id": "obj-136",
                     "maxclass": "jsui",
                     "numinlets": 1,
@@ -95,7 +95,7 @@
             },
             {
                 "box": {
-                    "filename": "reload_button_jsui.js",
+                    "filename": "Patcher:/../code/reload_button_jsui.js",
                     "id": "obj-109",
                     "maxclass": "jsui",
                     "numinlets": 1,
@@ -1139,7 +1139,7 @@
                     "maxclass": "newobj",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 1432.3181818181818, 76.0, 92.0, 22.0 ],
+                    "patching_rect": [ 1432.3181818181818, 76.0, 93.0, 22.0 ],
                     "text": "s pad_inversion",
                     "varname": "obj-125"
                 }
@@ -1862,15 +1862,14 @@
                     "gradient": 1,
                     "id": "obj-8",
                     "ignoreclick": 1,
-                    "linecount": 2,
                     "maxclass": "message",
                     "numinlets": 2,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 7.0, 1080.0, 257.0, 28.0 ],
+                    "patching_rect": [ 7.0, 1080.0, 257.0, 18.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 183.0, 248.0, 339.0, 18.0 ],
-                    "text": "\"C-Super-Locrian Diminished-I-Suspended 4ths, 7ths & 9ths\"",
+                    "text": "C-Major-I-Triads",
                     "textcolor": [ 0.85, 0.85, 0.85, 1.0 ],
                     "textjustification": 1,
                     "varname": "obj-61"
@@ -2141,7 +2140,7 @@
             {
                 "box": {
                     "border": 0,
-                    "filename": "Panic_jsui.js",
+                    "filename": "Patcher:/../code/Panic_jsui.js",
                     "id": "obj-26",
                     "maxclass": "jsui",
                     "numinlets": 1,
@@ -2205,7 +2204,7 @@
             {
                 "box": {
                     "border": 0,
-                    "filename": "key_degree_jsui.js",
+                    "filename": "Patcher:/../code/key_degree_jsui.js",
                     "id": "obj-13",
                     "maxclass": "jsui",
                     "numinlets": 3,
@@ -2688,7 +2687,7 @@
                     "bgfillcolor_type": "color",
                     "elementcolor": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1.0 ],
                     "id": "mc_umenu",
-                    "items": [ "AU DLS Synth 1", ",", "Gestionnaire IAC Bus 1", ",", "from Max 1", ",", "from Max 2", ",", "DLS-MIDI-Synth Virtual In" ],
+                    "items": [ "AU DLS Synth 1", ",", "Gestionnaire IAC Bus 1", ",", "from Max 1", ",", "from Max 2" ],
                     "maxclass": "umenu",
                     "numinlets": 1,
                     "numoutlets": 3,
@@ -3138,7 +3137,7 @@
                                 "type": 0
                             },
                             "39": {
-                                "values": [ 4, 7, 6, 4, 2, 4, 9, 5, 7, 6, 5, 4, 3, 2, 1, 2 ],
+                                "values": [ 1, 4, 6, 1, 7, 4, 6, 8, 7, 6, 5, 4, 3, 2, 1, 2 ],
                                 "length": 8,
                                 "type": 0
                             },

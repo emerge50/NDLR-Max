@@ -9,7 +9,7 @@ Pad, Drone, Motifs, Voice Grouping, inversions et matrice de modulation.
 ## Ouvrir le projet
 
 1. Installer Max.
-2. Ouvrir `ndlr_max.maxproj`.
+2. Ouvrir `NDLR-Max.maxproj`.
 3. Ouvrir `patchers/ndlr_main.maxpat` si le patch principal ne s'affiche pas automatiquement.
 
 ## Structure

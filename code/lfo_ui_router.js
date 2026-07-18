@@ -3,11 +3,11 @@ autowatch = 1;
 var SHAPE_NAMES = ['sine', 'triangle', 'ramp', 'saw', 'square', 'pulse', 'random'];
 
 var PATT_NAMES = [
-    'Montée-descente', 'Sauts de tierces', 'Pivot sur racine', 'Zigzag montant',
-    'Bourdon aigu', 'Cascade', 'Impairs-pairs', 'Alberti',
-    "Escalier d'accord", 'Basse + accord', 'Echo doublé', 'Miroir',
-    'Clave', 'Rythmique', 'Pentatonique feel', 'Paires alternées',
-    'Spirale', 'Marches liées', 'Sauts de quarte', 'Rotatif',
+    'Up-Down', 'Third Leaps', 'Root Pivot', 'Ascending Zigzag',
+    'High Drone', 'Cascade', 'Odd-Even', 'Alberti',
+    "Chord Staircase", 'Bass + Chord', 'Double Echo', 'Mirror',
+    'Clave', 'Rhythmic', 'Pentatonic Feel', 'Alternating Pairs',
+    'Spiral', 'Linked Steps', 'Fourth Leaps', 'Rotating',
     'User 21', 'User 22', 'User 23', 'User 24', 'User 25', 'User 26',
     'User 27', 'User 28', 'User 29', 'User 30', 'User 31', 'User 32',
     'User 33', 'User 34', 'User 35', 'User 36', 'User 37', 'User 38',
