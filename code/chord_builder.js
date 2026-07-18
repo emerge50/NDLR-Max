@@ -2,17 +2,16 @@
 // inlet 0 : messages nommés
 //   scale [notes...]  : notes de la gamme
 //   degree [0-6]      : degré (index 0-based)
-//   type   [0-17]     : type d'accord
+//   color  [0-8]      : categorie COLOR Scaler 3.3
+//   type   [0-8]      : alias historique de color
 // outlet 0 : liste des notes de l'accord (octave centrale)
 // outlet 1 : pool complet sur tout le clavier MIDI (0-127)
 // outlet 2 : rôles des notes — liste de paires [noteClass, role]
 //            role: 0=tonique 1=neuvième 2=tierce 3=quarte 4=quinte 5=sixte 6=septième
 //
-// Types d'accords :
-//   0 Triad    1 7th      2 sus2     3 sus4    4 6th
-//   5 mu/add2  6 add9     7 9th      8 quartal
-//   9 power   10 shell   11 quintal 12 11th   13 13th   14 cluster
-//  15 shell9  16 open9   17 So What
+// Couleurs :
+//   0 Triads  1 7ths  2 9ths  3 11ths  4 13ths  5 Suspended
+//   6 6ths & 7ths  7 Minor 7ths & 9ths  8 Suspended 4ths, 7ths & 9ths
 
 inlets  = 1;
 outlets = 3;
@@ -20,6 +19,27 @@ outlets = 3;
 var currentScale  = [];
 var currentDegree = 0;
 var currentType   = 0;
+
+// Les cinq premieres couleurs et Suspended reutilisent les formules
+// diatoniques historiques. La categorie 6 ajoute 6e et 7e lorsque la gamme
+// contient sept notes. Les deux dernieres couleurs sont chromatiques, comme
+// les extensions correspondantes de Scaler.
+var COLOR_TO_LEGACY_TYPE = [0, 1, 7, 12, 13, 3, 4];
+var COLOR_CHROMATIC_INTERVALS = {
+    7: [0, 3, 7, 10, 14], // min9
+    8: [0, 5, 7, 10, 14]  // 9sus4
+};
+var COLOR_ROLE_SEQUENCES = {
+    0: [0, 2, 4],
+    1: [0, 2, 4, 6],
+    2: [0, 2, 4, 6, 1],
+    3: [0, 2, 4, 6, 1, 3],
+    4: [0, 2, 4, 6, 1, 3, 5],
+    5: [0, 3, 4],
+    6: [0, 2, 4, 5, 6],
+    7: [0, 2, 4, 6, 1],
+    8: [0, 3, 4, 6, 1]
+};
 
 // ── Formules pour gammes à 7 notes ──────────────────────────────────
 var FORMULAS_7 = {
@@ -207,15 +227,25 @@ function getRoleMap(type, scaleLen) {
     return ROLES_7[type];
 }
 
+function getColorFormula(color, scaleLen) {
+    if (color === 6 && (scaleLen === 7 || scaleLen === 8)) {
+        return [0, 2, 4, 5, 6];
+    }
+    var legacyType = COLOR_TO_LEGACY_TYPE[color];
+    if (legacyType === undefined) return null;
+    return getFormula(legacyType, scaleLen);
+}
+
 function buildChord() {
     if (currentScale.length === 0) return;
 
     var scaleLen = currentScale.length;
-    var formula  = getFormula(currentType, scaleLen);
-    var roleMap  = getRoleMap(currentType, scaleLen);
+    var chromaticFormula = COLOR_CHROMATIC_INTERVALS[currentType];
+    var formula = chromaticFormula || getColorFormula(currentType, scaleLen);
+    var roleSequence = COLOR_ROLE_SEQUENCES[currentType] || [];
 
     if (!formula) {
-        error("Formule introuvable type:" + currentType +
+        error("Formule introuvable color:" + currentType +
               " scaleLen:" + scaleLen + "\n");
         return;
     }
@@ -223,10 +253,14 @@ function buildChord() {
     // 1. Construire les notes de l'accord (octave centrale)
     var notes = [];
     for (var i = 0; i < formula.length; i++) {
-        var rawIdx      = currentDegree + formula[i];
-        var idx         = rawIdx % scaleLen;
-        var octaveShift = Math.floor(rawIdx / scaleLen);
-        notes.push(currentScale[idx] + (octaveShift * 12));
+        if (chromaticFormula) {
+            notes.push(currentScale[currentDegree % scaleLen] + formula[i]);
+        } else {
+            var rawIdx      = currentDegree + formula[i];
+            var idx         = rawIdx % scaleLen;
+            var octaveShift = Math.floor(rawIdx / scaleLen);
+            notes.push(currentScale[idx] + (octaveShift * 12));
+        }
     }
 
     // 2. Construire le pool complet (0-127) et la map noteClass → role
@@ -234,12 +268,17 @@ function buildChord() {
     var noteRoles    = {};
 
     for (var j = 0; j < formula.length; j++) {
-        var rawIdx2      = currentDegree + formula[j];
-        var idx2         = rawIdx2 % scaleLen;
-        var octaveShift2 = Math.floor(rawIdx2 / scaleLen);
-        var note         = currentScale[idx2] + (octaveShift2 * 12);
+        var note;
+        if (chromaticFormula) {
+            note = currentScale[currentDegree % scaleLen] + formula[j];
+        } else {
+            var rawIdx2      = currentDegree + formula[j];
+            var idx2         = rawIdx2 % scaleLen;
+            var octaveShift2 = Math.floor(rawIdx2 / scaleLen);
+            note = currentScale[idx2] + (octaveShift2 * 12);
+        }
         var noteClass    = note % 12;
-        var role         = roleMap ? (roleMap[formula[j]] !== undefined ? roleMap[formula[j]] : 0) : 0;
+        var role         = roleSequence[j] !== undefined ? roleSequence[j] : 0;
 
         if (chordClasses.indexOf(noteClass) === -1) {
             chordClasses.push(noteClass);
@@ -283,6 +322,8 @@ function degree(v) {
 }
 
 function type(v) {
-    currentType = Math.max(0, Math.min(17, Math.round(v)));
+    currentType = Math.max(0, Math.min(8, Math.round(v)));
     buildChord();
 }
+
+function color(v) { type(v); }

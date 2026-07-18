@@ -2,16 +2,16 @@
 // inlet 0 : messages nommés
 //   pool [notes...]      : pool complet des notes de l'accord
 //   roles [nc r nc r...] : paires noteClass/role depuis chord_builder
-//   position [0-100]     : position sur le clavier
-//   range [1-22]         : nombre de notes à jouer
+//   register [-2..2]     : transposition finale par octaves
 //   strum_on [0-1]       : active/désactive le strum
 //   strum_div [1-21]     : division d'horloge entre les notes
 //   strum_group [0-1]    : joue les 3 premières notes ensemble
 //   strum [1-7]          : compatibilité avec l'ancien sélecteur
-//   spread [1-6]         : disposition des notes
+//   spread [0-14]        : profil Voice Grouping Scaler 3.3 (alias historique)
 //   polychain [1-4]      : répartit les voix sur 1 à 4 canaux MIDI
 //   channel [1-16]       : premier canal MIDI utilisé par Poly-Chain
-//   chord_invert [0-1]   : renversement automatique à mouvement minimal
+//   inversion [0-6]      : aucune inversion ou profil Scaler 3.3
+//   chord_invert [0-1]   : alias historique (1 = 1st Inversion)
 //   pad_quant [0-2]      : 0=off, 1=1/4, 2=1/8
 //   beat                 : tick maître 96 PPQN pour la quantification
 //   tempo [10-300]       : tempo en BPM
@@ -36,18 +36,30 @@ var CLK_DIVISIONS = [
     {id:19,label:'64nd',ticks:9}, {id:20,label:'64n',ticks:6}, {id:21,label:'128n',ticks:3}
 ];
 
+var VOICE_GROUPING_PROFILES = [
+    'Dynamic', 'Dynamic +1 Oct', 'Dynamic +2 Oct',
+    'Grouping C1-B2', 'Grouping C2-B3', 'Grouping C3-B4',
+    'Open 1 Voicing', 'Open 2 Voicing', 'Guitar Voicing',
+    'Drop 2 Voicing', 'Drop 3 Voicing', 'Drop 4 Voicing',
+    'Drop 2 & 3 Voicing', 'Extracted', 'Open 3 Voicing'
+];
+
+var INVERSION_PROFILES = [
+    'No Inversion', '1st Inversion', '2nd Inversion', 'Drop 2', 'Drop 2 & 3',
+    '7ths Inverted', 'Octaves & Inverted 3rds'
+];
+
 var currentPool     = [];
 var currentRoles    = {};  // noteClass (0-11) → role
 var stagedRoles     = {};  // rôles du prochain pool reçu
-var currentPosition = 50;
-var currentRange    = 13;
+var currentRegister = 0;
 var strumEnabled    = false;
 var currentStrumDiv = 17; // 32n, équivalent de l'ancien 1/32
 var strumGrouped    = false;
-var currentSpread   = 4;
+var currentSpread   = 0; // index du profil Voice Grouping
 var currentPolyChain = 1;
 var currentChannel   = 1;
-var chordInvert      = false;
+var currentInversion = 0;
 var currentPadQuant  = 0;
 var quantTick        = 0;
 var pendingPool      = null;
@@ -58,14 +70,13 @@ var isRunning              = false;
 var isEnabled              = false; // état du bouton on/off local (indépendant du transport)
 var globalTransportRunning = false; // true quand le transport global ndlr est actif
 var activeNotes     = [];
+var activeGroupedNotes = [];
 var strumTasks      = [];
+var extractedVoicingOffsets = null;
+var dynamicTransitionShift = 0;
 var pendingControls = {
-    position: currentPosition,
-    range: currentRange,
     spread: currentSpread,
     vel: currentVel,
-    positionDirty: false,
-    rangeDirty: false,
     spreadDirty: false,
     velDirty: false
 };
@@ -107,180 +118,293 @@ function getRole(midiNote) {
     return (currentRoles[nc] !== undefined) ? currentRoles[nc] : ROLE_ROOT;
 }
 
-// Applique le Spread sur une liste de notes candidates
-function applySpread(notes) {
-    // Le firmware conserve le voicing empilé par tierces quand quatre notes
-    // ou moins sont demandées, quel que soit le Spread sélectionné.
-    if (currentSpread === 1 || notes.length <= 4) return notes;
-
+function uniqueSorted(notes) {
     var result = [];
-
-    switch (currentSpread) {
-
-        case 2:
-            // Tonique seule dans les graves (octave 0-2)
-            // Accord ouvert en medium-bas (3-4)
-            // Accord fermé en medium-haut (5-6)
-            // Tonique seule dans l'aigu (7+)
-            for (var i = 0; i < notes.length; i++) {
-                var n    = notes[i];
-                var oct  = Math.floor(n / 12);
-                var role = getRole(n);
-                if (oct <= 2) {
-                    if (role === ROLE_ROOT) result.push(n);
-                } else if (oct <= 4) {
-                    result.push(n);  // accord ouvert
-                } else if (oct <= 6) {
-                    if (role === ROLE_ROOT || role === ROLE_THIRD ||
-                        role === ROLE_FIFTH) result.push(n);
-                } else {
-                    if (role === ROLE_ROOT) result.push(n);
-                }
-            }
-            break;
-
-        case 3:
-            // Tonique seule dans les graves, accord fermé en 4ème octave
-            for (var i = 0; i < notes.length; i++) {
-                var n    = notes[i];
-                var oct  = Math.floor(n / 12);
-                var role = getRole(n);
-                if (oct <= 2) {
-                    if (role === ROLE_ROOT) result.push(n);
-                } else if (oct === 3) {
-                    result.push(n);
-                }
-            }
-            break;
-
-        case 4:
-            // 70% de chance pour chaque note
-            for (var i = 0; i < notes.length; i++) {
-                if (Math.random() < 0.7) result.push(notes[i]);
-            }
-            // Toujours au moins une note
-            if (result.length === 0) result.push(notes[0]);
-            break;
-
-        case 5:
-            // Tonique seule dans les graves, tonique+quinte ailleurs
-            for (var i = 0; i < notes.length; i++) {
-                var n    = notes[i];
-                var oct  = Math.floor(n / 12);
-                var role = getRole(n);
-                if (oct <= 2) {
-                    if (role === ROLE_ROOT) result.push(n);
-                } else {
-                    if (role === ROLE_ROOT || role === ROLE_FIFTH) result.push(n);
-                }
-            }
-            break;
-
-        case 6:
-            // Tonique seule dans les graves, tierce ou 7ème au-dessus
-            for (var i = 0; i < notes.length; i++) {
-                var n    = notes[i];
-                var oct  = Math.floor(n / 12);
-                var role = getRole(n);
-                if (oct <= 2) {
-                    if (role === ROLE_ROOT) result.push(n);
-                } else {
-                    if (role === ROLE_ROOT  || role === ROLE_THIRD ||
-                        role === ROLE_SEVENTH) result.push(n);
-                }
-            }
-            break;
-
-        default:
-            return notes;
+    var sorted = notes.slice().sort(function(a, b) { return a - b; });
+    for (var i = 0; i < sorted.length; i++) {
+        var note = Math.max(0, Math.min(127, Math.round(sorted[i])));
+        if (result.indexOf(note) < 0) result.push(note);
     }
-
-    // Si le filtre est trop agressif, garder au moins la note centrale
-    if (result.length === 0) {
-        var mid = Math.floor(notes.length / 2);
-        result.push(notes[mid]);
-    }
-
     return result;
 }
 
-// Essaie toutes les inversions de l'accord (rotation des voix), puis toutes
-// les octaves possibles. C'est la rotation qui manquait à l'ancienne
-// implémentation : déplacer chaque note isolément d'une octave ne pouvait pas
-// transformer G-B-D en D-G-B, donc le réglage était souvent inaudible.
-function applyChordInvert(notes) {
-    if (!chordInvert || activeNotes.length === 0 || notes.length === 0) return notes;
-    var best = notes.slice();
-    var bestScore = Infinity;
-
-    for (var rotation = 0; rotation < notes.length; rotation++) {
-        var rotated = notes.slice(rotation);
-        for (var r = 0; r < rotation; r++) rotated.push(notes[r] + 12);
-
-        for (var octave = -5; octave <= 5; octave++) {
-            var candidate = [];
-            var valid = true;
-            for (var i = 0; i < rotated.length; i++) {
-                var note = rotated[i] + octave * 12;
-                if (note < 0 || note > 127) { valid = false; break; }
-                candidate.push(note);
-            }
-            if (!valid) continue;
-
-            var score = 0;
-            for (var j = 0; j < candidate.length; j++) {
-                var targetIndex = candidate.length === 1 ? 0 :
-                    Math.round(j * (activeNotes.length - 1) / (candidate.length - 1));
-                score += Math.abs(candidate[j] - activeNotes[targetIndex]);
-            }
-            // En cas d'égalité, préférer l'inversion la moins radicale.
-            score += rotation * 0.001 + Math.abs(octave) * 0.0001;
-            if (score < bestScore) {
-                best = candidate;
-                bestScore = score;
-            }
+function nearestPitchClass(noteClass, target, low, high) {
+    var best = low;
+    var bestDistance = 999;
+    for (var note = low; note <= high; note++) {
+        if (((note % 12) + 12) % 12 !== noteClass) continue;
+        var distance = Math.abs(note - target);
+        if (distance < bestDistance) {
+            best = note;
+            bestDistance = distance;
         }
     }
     return best;
+}
+
+function rootClassFor(notes) {
+    for (var i = 0; i < notes.length; i++) {
+        if (getRole(notes[i]) === ROLE_ROOT) return ((notes[i] % 12) + 12) % 12;
+    }
+    return notes.length ? ((notes[0] % 12) + 12) % 12 : 0;
+}
+
+// Repartit les voix dans une plage de deux octaves, comme les trois profils
+// Dynamic C1-B2 / C2-B3 / C3-B4 de Scaler. Scaler numerote le do central C3.
+function fitToRange(notes, low, high) {
+    var source = uniqueSorted(notes);
+    var result = [];
+    if (!source.length) return result;
+    for (var i = 0; i < source.length; i++) {
+        var target = source.length === 1 ? (low + high) / 2 :
+            low + i * (high - low) / (source.length - 1);
+        var noteClass = ((source[i] % 12) + 12) % 12;
+        result.push(nearestPitchClass(noteClass, target, low, high));
+    }
+    return uniqueSorted(result);
+}
+
+function dynamicVoicing(notes, octaveShift) {
+    var source = uniqueSorted(notes);
+    if (!source.length) return source;
+    // Voice Grouping travaille dans son propre registre central. Le controle
+    // Register est volontairement applique seulement apres ce calcul.
+    var center = 60 + octaveShift;
+    var result = [];
+
+    for (var i = 0; i < source.length; i++) {
+        var target;
+        if (activeGroupedNotes.length) {
+            var activeIndex = source.length === 1 ? 0 :
+                Math.round(i * (activeGroupedNotes.length - 1) / (source.length - 1));
+            // Appliquer uniquement la difference lors d'un changement de
+            // profil. Les accords suivants restent stables dans cette octave.
+            target = activeGroupedNotes[activeIndex] + dynamicTransitionShift;
+        } else {
+            target = center + (i - (source.length - 1) / 2) * 4;
+        }
+        result.push(nearestPitchClass(source[i] % 12, target, 0, 127));
+    }
+
+    // Le profil Dynamic place une basse de fondamentale deux octaves sous le
+    // centre tonal, puis choisit les inversions superieures les plus proches.
+    var bass = nearestPitchClass(rootClassFor(source), center - 24, 0, 127);
+    result.push(bass);
+    dynamicTransitionShift = 0;
+    return uniqueSorted(result);
+}
+
+function openVoicing(notes, level) {
+    var result = uniqueSorted(notes);
+    var minimumGap = 3 + level * 2;
+    for (var i = 1; i < result.length; i++) {
+        while (result[i] - result[i - 1] < minimumGap && result[i] + 12 <= 127) {
+            result[i] += 12;
+        }
+    }
+    return uniqueSorted(result);
+}
+
+function dropVoicing(notes, drops) {
+    var result = uniqueSorted(notes);
+    for (var i = 0; i < drops.length; i++) {
+        var index = result.length - drops[i];
+        if (index >= 0 && result[index] - 12 >= 0) result[index] -= 12;
+    }
+    return uniqueSorted(result);
+}
+
+function guitarVoicing(notes) {
+    var source = uniqueSorted(notes);
+    if (source.length > 6) {
+        var reduced = [];
+        for (var i = 0; i < 6; i++) {
+            reduced.push(source[Math.round(i * (source.length - 1) / 5)]);
+        }
+        source = uniqueSorted(reduced);
+    }
+    // E2-E5 avec la convention C3=60 utilisee par Scaler.
+    return fitToRange(source, 40, 76);
+}
+
+function extractedVoicing(notes) {
+    var source = uniqueSorted(notes);
+    if (!source.length) return source;
+    if (!extractedVoicingOffsets || !extractedVoicingOffsets.length) {
+        var template = activeGroupedNotes.length ? uniqueSorted(activeGroupedNotes) : source;
+        extractedVoicingOffsets = [];
+        for (var i = 0; i < template.length; i++) {
+            extractedVoicingOffsets.push(template[i] - template[0]);
+        }
+    }
+
+    var base = nearestPitchClass(rootClassFor(source), source[0], 0, 127);
+    var result = [];
+    for (var j = 0; j < extractedVoicingOffsets.length; j++) {
+        var target = base + extractedVoicingOffsets[j];
+        var best = source[0];
+        var bestDistance = 999;
+        for (var k = 0; k < source.length; k++) {
+            var candidate = nearestPitchClass(source[k] % 12, target, 0, 127);
+            var distance = Math.abs(candidate - target);
+            if (distance < bestDistance) {
+                best = candidate;
+                bestDistance = distance;
+            }
+        }
+        result.push(best);
+    }
+    return uniqueSorted(result);
+}
+
+function applyVoiceGrouping(notes) {
+    switch (currentSpread) {
+        case 0:  return dynamicVoicing(notes, 0);
+        case 1:  return dynamicVoicing(notes, 12);
+        case 2:  return dynamicVoicing(notes, 24);
+        case 3:  return fitToRange(notes, 36, 59); // C1-B2
+        case 4:  return fitToRange(notes, 48, 71); // C2-B3
+        case 5:  return fitToRange(notes, 60, 83); // C3-B4
+        case 6:  return openVoicing(notes, 1);
+        case 7:  return openVoicing(notes, 2);
+        case 8:  return guitarVoicing(notes);
+        case 9:  return dropVoicing(notes, [2]);
+        case 10: return dropVoicing(notes, [3]);
+        case 11: return dropVoicing(notes, [4]);
+        case 12: return dropVoicing(notes, [2, 3]);
+        case 13: return extractedVoicing(notes);
+        case 14: return openVoicing(notes, 3);
+    }
+    return notes;
+}
+
+function rotateVoices(notes, count) {
+    var result = uniqueSorted(notes);
+    for (var i = 0; i < count && result.length > 1; i++) {
+        var raised = result.shift() + 12;
+        if (raised <= 127) result.push(raised);
+    }
+    return uniqueSorted(result);
+}
+
+// Reconstruit une seule occurrence de chaque note harmonique en position
+// fondamentale. Aucun ancien controle Range ne limite plus l'accord source.
+function compactChordVoicing(notes) {
+    var source = uniqueSorted(notes);
+    if (!source.length) return source;
+
+    var rootClass = rootClassFor(source);
+    var center = (source[0] + source[source.length - 1]) / 2;
+    var root = nearestPitchClass(rootClass, center, 0, 127);
+    var noteClasses = {};
+    for (var i = 0; i < source.length; i++) {
+        noteClasses[source[i] % 12] = true;
+    }
+
+    var result = [];
+    for (var key in noteClasses) {
+        if (!noteClasses.hasOwnProperty(key)) continue;
+        var interval = (parseInt(key, 10) - rootClass + 12) % 12;
+        result.push(root + interval);
+    }
+    result = uniqueSorted(result);
+
+    while (result.length && result[result.length - 1] > 127) {
+        for (var j = 0; j < result.length; j++) result[j] -= 12;
+    }
+    while (result.length && result[0] < 0) {
+        for (var k = 0; k < result.length; k++) result[k] += 12;
+    }
+    return uniqueSorted(result);
+}
+
+function noteClassForRole(role, fallback) {
+    for (var noteClass in currentRoles) {
+        if (currentRoles.hasOwnProperty(noteClass) && currentRoles[noteClass] === role) {
+            return parseInt(noteClass, 10);
+        }
+    }
+    return fallback;
+}
+
+// Voicing Scaler "7ths Inverted" : fondamentale en doubles octaves graves,
+// puis quinte et septieme sous la fondamentale, tierce au-dessus.
+function seventhsInverted(notes) {
+    var source = uniqueSorted(notes);
+    if (!source.length) return source;
+    var rootClass = rootClassFor(source);
+    var center = (source[0] + source[source.length - 1]) / 2;
+    var root = nearestPitchClass(rootClass, center, 36, 96);
+    var thirdClass = noteClassForRole(ROLE_THIRD, source[Math.min(1, source.length - 1)] % 12);
+    var fifthClass = noteClassForRole(ROLE_FIFTH, source[Math.min(2, source.length - 1)] % 12);
+    var seventhClass = noteClassForRole(ROLE_SEVENTH, source[source.length - 1] % 12);
+    return uniqueSorted([
+        root - 24,
+        root - 12,
+        nearestPitchClass(fifthClass, root - 5, 0, 127),
+        nearestPitchClass(seventhClass, root - 1, 0, 127),
+        nearestPitchClass(thirdClass, root + 4, 0, 127)
+    ]);
+}
+
+// Reprend le dessin du preset Scaler : fondamentale sur trois octaves et
+// tierce de l'accord entre les deux voix superieures.
+function octavesAndInvertedThirds(notes) {
+    var source = uniqueSorted(notes);
+    if (!source.length) return source;
+    var rootClass = rootClassFor(source);
+    var center = (source[0] + source[source.length - 1]) / 2;
+    var root = nearestPitchClass(rootClass, center, 36, 96);
+    var thirdClass = noteClassForRole(ROLE_THIRD, source[Math.min(1, source.length - 1)] % 12);
+    return uniqueSorted([
+        root - 24,
+        root - 12,
+        nearestPitchClass(thirdClass, root + 4, 0, 127),
+        root + 12
+    ]);
+}
+
+function applyInversion(notes) {
+    var source = uniqueSorted(notes);
+    if (currentInversion === 0) return source;
+
+    var compact = compactChordVoicing(notes);
+    switch (currentInversion) {
+        case 1: return rotateVoices(compact, 1);
+        case 2: return rotateVoices(compact, 2);
+        case 3: return dropVoicing(compact, [2]);
+        case 4: return dropVoicing(compact, [2, 3]);
+        case 5: return seventhsInverted(compact);
+        case 6: return octavesAndInvertedThirds(compact);
+    }
+    return compact;
+}
+
+// Register intervient en toute derniere etape : il ne change ni l'inversion,
+// ni le choix des voix effectue par Voice Grouping.
+function applyRegister(notes) {
+    var shift = currentRegister * 12;
+    var shifted = [];
+    for (var i = 0; i < notes.length; i++) shifted.push(notes[i] + shift);
+    return uniqueSorted(shifted);
 }
 
 function buildPad(forceRetrigger) {
     if (!isRunning) return;
     if (currentPool.length === 0) return;
 
-    // 1. Mapper position vers MIDI
-    var midiPos = Math.round(currentPosition * 1.27);
+    // 1. Accord harmonique complet, sans fenetre Range.
+    var harmonicNotes = compactChordVoicing(currentPool);
 
-    // 2. Trouver la note la plus proche dans le pool
-    var closestIdx  = 0;
-    var closestDist = 999;
-    for (var i = 0; i < currentPool.length; i++) {
-        var dist = Math.abs(currentPool[i] - midiPos);
-        if (dist < closestDist) {
-            closestDist = dist;
-            closestIdx  = i;
-        }
-    }
+    // 2. Inversion, puis Voice Grouping comme traitement global Scaler.
+    var invertedNotes = applyInversion(harmonicNotes);
+    var groupedNotes = applyVoiceGrouping(invertedNotes);
 
-    // 3. Extraire Range notes autour de closestIdx
-    var half     = Math.floor(currentRange / 2);
-    var startIdx = Math.max(0, closestIdx - half);
-    var endIdx   = Math.min(currentPool.length - 1,
-                            startIdx + currentRange - 1);
+    // 3. Register transpose uniquement le resultat final par octaves.
+    var newNotes = applyRegister(groupedNotes);
+    activeGroupedNotes = groupedNotes.slice();
 
-    if (endIdx - startIdx + 1 < currentRange) {
-        startIdx = Math.max(0, endIdx - currentRange + 1);
-    }
-
-    var candidateNotes = [];
-    for (var j = startIdx; j <= endIdx; j++) {
-        candidateNotes.push(currentPool[j]);
-    }
-
-    // 4. Appliquer le Spread
-    var newNotes = applyChordInvert(applySpread(candidateNotes));
-
-    // 5. Calculer toStop et toPlay
+    // 4. Calculer toStop et toPlay
     var previousNotes = activeNotes.slice();
     var toStop = [];
     var toPlay = [];
@@ -381,18 +505,14 @@ function roles() {
     // annulent les Task du strum avant qu'elles aient pu jouer.
 }
 
-function position(v) {
-    currentPosition = Math.max(0, Math.min(100, v));
-    pendingControls.position = currentPosition;
-    pendingControls.positionDirty = false;
+function register(v) {
+    currentRegister = Math.max(-2, Math.min(2, Math.round(v)));
     buildPad();
 }
 
-function range(v) {
-    currentRange = Math.max(1, Math.min(22, v));
-    pendingControls.range = currentRange;
-    pendingControls.rangeDirty = false;
-    buildPad();
+function register_select(v) {
+    register(v);
+    messnamed('pad_register', currentRegister);
 }
 
 function strum_on(v) {
@@ -430,17 +550,71 @@ function configureStrumMenu() {
     menu.message('set', currentStrumDiv - 1);
 }
 
+function configureVoiceGroupingMenu() {
+    if (!this.patcher || !this.patcher.getnamed) return;
+    var menu = this.patcher.getnamed('pad_voice_grouping_ui');
+    if (!menu) return;
+    menu.message('clear');
+    for (var i = 0; i < VOICE_GROUPING_PROFILES.length; i++) {
+        menu.message('append', VOICE_GROUPING_PROFILES[i]);
+    }
+    menu.message('set', currentSpread);
+}
+
+function configureInversionMenu() {
+    if (!this.patcher || !this.patcher.getnamed) return;
+    var menu = this.patcher.getnamed('pad_inversion_menu');
+    if (!menu) return;
+    menu.message('clear');
+    for (var i = 0; i < INVERSION_PROFILES.length; i++) {
+        menu.message('append', INVERSION_PROFILES[i]);
+    }
+    menu.message('set', currentInversion);
+}
+
 function loadbang() {
     readClockDivisions();
     configureStrumMenu.call(this);
+    configureVoiceGroupingMenu.call(this);
+    configureInversionMenu.call(this);
     messnamed('mod_input', 'part_active', 'pad', 0);
 }
 
+function dynamicShiftForProfile(profile) {
+    if (profile === 0) return 0;
+    if (profile === 1) return 12;
+    if (profile === 2) return 24;
+    return null;
+}
+
+function prepareVoiceGroupingTransition(oldProfile, newProfile) {
+    var oldShift = dynamicShiftForProfile(oldProfile);
+    var newShift = dynamicShiftForProfile(newProfile);
+    if (newShift === null) {
+        dynamicTransitionShift = 0;
+    } else {
+        dynamicTransitionShift = newShift - (oldShift === null ? 0 : oldShift);
+    }
+}
+
 function spread(v) {
-    currentSpread = Math.max(1, Math.min(6, v));
+    var nextProfile = Math.max(0, Math.min(VOICE_GROUPING_PROFILES.length - 1, Math.round(v)));
+    prepareVoiceGroupingTransition(currentSpread, nextProfile);
+    currentSpread = nextProfile;
+    if (currentSpread !== 13) extractedVoicingOffsets = null;
     pendingControls.spread = currentSpread;
     pendingControls.spreadDirty = false;
     buildPad();
+}
+
+// Nouveau nom explicite, tout en conservant spread() pour les anciens patchers.
+function voice_grouping(v) { spread(v); }
+
+// Le umenu est un controle discret : valider immediatement la selection et
+// publier sa valeur de base, sans attendre le mouse-up utilise par les sliders.
+function voice_grouping_select(v) {
+    spread(v);
+    messnamed('pad_spread', currentSpread);
 }
 
 function polychain(v) {
@@ -452,9 +626,13 @@ function channel(v) {
     currentChannel = Math.max(1, Math.min(16, Math.round(v)));
 }
 
-function chord_invert(v) {
-    chordInvert = v ? true : false;
+function inversion(v) {
+    currentInversion = Math.max(0, Math.min(6, Math.round(v)));
     if (isRunning) buildPad(true);
+}
+
+function chord_invert(v) {
+    if (v) inversion(1);
 }
 
 function pad_quant(v) {
@@ -489,20 +667,12 @@ function vel(v) {
     pendingControls.velDirty = false;
 }
 
-function position_preview(v) {
-    pendingControls.position = Math.max(0, Math.min(100, Math.round(v)));
-    pendingControls.positionDirty = pendingControls.position !== currentPosition;
-}
-
-function range_preview(v) {
-    pendingControls.range = Math.max(1, Math.min(22, Math.round(v)));
-    pendingControls.rangeDirty = pendingControls.range !== currentRange;
-}
-
 function spread_preview(v) {
-    pendingControls.spread = Math.max(1, Math.min(6, Math.round(v)));
+    pendingControls.spread = Math.max(0, Math.min(VOICE_GROUPING_PROFILES.length - 1, Math.round(v)));
     pendingControls.spreadDirty = pendingControls.spread !== currentSpread;
 }
+
+function voice_grouping_preview(v) { spread_preview(v); }
 
 function vel_preview(v) {
     pendingControls.vel = Math.max(0, Math.min(127, Math.round(v)));
@@ -512,20 +682,10 @@ function vel_preview(v) {
 // Valide ensemble les contrôles modifiés lorsque le bouton de souris est relâché.
 function controls_release() {
     var rebuild = false;
-    if (pendingControls.positionDirty) {
-        currentPosition = pendingControls.position;
-        pendingControls.positionDirty = false;
-        messnamed('pad_position', currentPosition);
-        rebuild = true;
-    }
-    if (pendingControls.rangeDirty) {
-        currentRange = pendingControls.range;
-        pendingControls.rangeDirty = false;
-        messnamed('pad_range', currentRange);
-        rebuild = true;
-    }
     if (pendingControls.spreadDirty) {
+        prepareVoiceGroupingTransition(currentSpread, pendingControls.spread);
         currentSpread = pendingControls.spread;
+        if (currentSpread !== 13) extractedVoicingOffsets = null;
         pendingControls.spreadDirty = false;
         messnamed('pad_spread', currentSpread);
         rebuild = true;
@@ -588,4 +748,5 @@ function allnotesoff() {
         }
         activeNotes = [];
     }
+    activeGroupedNotes = [];
 }

@@ -9,9 +9,119 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 582.0, 474.0, 576.0, 232.0 ],
+        "rect": [ 249.0, 229.0, 1077.0, 603.0 ],
         "openinpresentation": 1,
         "boxes": [
+            {
+                "box": {
+                    "id": "obj-lbl-register",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 21, 133, 110, 20 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 161.0000047981739, 86.00000256299973, 53.33332821726799, 20 ],
+                    "saved_attribute_attributes": {
+                        "textcolor": {
+                            "expression": "themecolor.live_lcd_title"
+                        }
+                    },
+                    "text": "Register",
+                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1 ]
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-lbl-quant",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 156, 133, 100, 20 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 242.6666738986969, 86.00000256299973, 45, 20 ],
+                    "saved_attribute_attributes": {
+                        "textcolor": {
+                            "expression": "themecolor.live_lcd_title"
+                        }
+                    },
+                    "text": "Quant",
+                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1 ]
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-lbl-strum",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 405.0, 88.0, 59.0, 20.0 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 2.0000000596046448, 86.00000256299973, 43.0, 20.0 ],
+                    "saved_attribute_attributes": {
+                        "textcolor": {
+                            "expression": "themecolor.live_lcd_title"
+                        }
+                    },
+                    "text": "Strum",
+                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
+                }
+            },
+            {
+                "box": {
+                    "fontsize": 10,
+                    "id": "pad-strum-on-label",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 542.0, 113.0, 22.0, 18.0 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 56.000001668930054, 87.00000259280205, 24.0, 18.0 ],
+                    "saved_attribute_attributes": {
+                        "textcolor": {
+                            "expression": "themecolor.live_lcd_title"
+                        }
+                    },
+                    "text": "On",
+                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
+                }
+            },
+            {
+                "box": {
+                    "fontsize": 10,
+                    "id": "pad-strum-group-label",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 662.0, 113.0, 104.0, 18.0 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 91.00000271201134, 87.00000259280205, 30.0, 18.0 ],
+                    "saved_attribute_attributes": {
+                        "textcolor": {
+                            "expression": "themecolor.live_lcd_title"
+                        }
+                    },
+                    "text": "Grp",
+                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-3",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 99.00000295042992, 150.66667115688324, 100, 20 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 97.00000289082527, 40.000001192092896, 58.0000017285347, 20 ],
+                    "saved_attribute_attributes": {
+                        "textcolor": {
+                            "expression": "themecolor.live_lcd_title"
+                        }
+                    },
+                    "text": "Inversion",
+                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1 ]
+                }
+            },
             {
                 "box": {
                     "id": "pad-midi-channel-init",
@@ -35,82 +145,49 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 467.0, 518.0, 113.0, 30.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 198.0, 55.0, 111.0, 30.0 ],
+                    "presentation_rect": [ 201.0, 35.000001043081284, 109.00000923871994, 30.00000089406967 ],
                     "varname": "pad_velocity_slider"
                 }
             },
             {
                 "box": {
-                    "border": 0,
-                    "filename": "slider_0-100.js",
+                    "bgcolor": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1 ],
+                    "htricolor": [ 1, 0.490196078431373, 0.262745098039216, 1 ],
                     "id": "obj-15",
-                    "maxclass": "jsui",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "parameter_enable": 0,
-                    "patching_rect": [ 26.0, 155.0, 113.0, 30.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 14.0, 55.0, 96.0, 30.0 ],
-                    "varname": "pad_humanize_slider"
-                }
-            },
-            {
-                "box": {
-                    "bgcolor": [ 0.15, 0.15, 0.15, 0.01 ],
-                    "htricolor": [ 1.0, 0.490196078431373, 0.262745098039216, 1.0 ],
-                    "id": "obj-16",
                     "maxclass": "number",
-                    "maximum": 22,
-                    "minimum": 1,
+                    "maximum": 2,
+                    "minimum": -2,
                     "mousefilter": 1,
                     "numinlets": 1,
                     "numoutlets": 2,
                     "outlettype": [ "", "bang" ],
-                    "outputonclick": 1,
                     "parameter_enable": 0,
-                    "patching_rect": [ 156.0, 164.0, 50.0, 22.0 ],
+                    "patching_rect": [ 26.0, 155.0, 50.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 108.0, 59.0, 40.0, 22.0 ],
-                    "saved_attribute_attributes": {
-                        "htricolor": {
-                            "expression": "themecolor.live_alert"
-                        },
-                        "textcolor": {
-                            "expression": "themecolor.live_play"
-                        }
-                    },
-                    "textcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
-                    "varname": "pad_range_ui"
+                    "presentation_rect": [ 209.00000622868538, 85.0000025331974, 29.33333420753479, 22.0 ],
+                    "textcolor": [ 0, 0.980392156862745, 0.63921568627451, 1 ],
+                    "varname": "pad_register_number"
                 }
             },
             {
                 "box": {
                     "bgcolor": [ 0.15, 0.15, 0.15, 0.01 ],
-                    "htricolor": [ 1.0, 0.490196078431373, 0.262745098039216, 1.0 ],
+                    "bgfillcolor_color": [ 0.15, 0.15, 0.15, 0.01 ],
+                    "bgfillcolor_color1": [ 0.208680531953877, 0.20868047419733, 0.208680489290039, 1 ],
+                    "bgfillcolor_color2": [ 0.208680531953877, 0.20868047419733, 0.208680489290039, 1 ],
+                    "bgfillcolor_type": "color",
                     "id": "obj-13",
-                    "maxclass": "number",
-                    "maximum": 6,
-                    "minimum": 1,
-                    "mousefilter": 1,
+                    "items": [ "Dynamic", ",", "Dynamic +1 Oct", ",", "Dynamic +2 Oct", ",", "Grouping C1-B2", ",", "Grouping C2-B3", ",", "Grouping C3-B4", ",", "Open 1 Voicing", ",", "Open 2 Voicing", ",", "Guitar Voicing", ",", "Drop 2 Voicing", ",", "Drop 3 Voicing", ",", "Drop 4 Voicing", ",", "Drop 2 & 3 Voicing", ",", "Extracted", ",", "Open 3 Voicing" ],
+                    "maxclass": "umenu",
                     "numinlets": 1,
-                    "numoutlets": 2,
-                    "outlettype": [ "", "bang" ],
-                    "outputonclick": 1,
+                    "numoutlets": 3,
+                    "outlettype": [ "int", "", "" ],
                     "parameter_enable": 0,
-                    "patching_rect": [ 272.0, 170.0, 50.0, 22.0 ],
+                    "patching_rect": [ 272.0, 170.0, 120.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 155.0, 59.0, 50.0, 22.0 ],
-                    "saved_attribute_attributes": {
-                        "htricolor": {
-                            "expression": "themecolor.live_alert"
-                        },
-                        "textcolor": {
-                            "expression": "themecolor.live_play"
-                        }
-                    },
+                    "presentation_rect": [ 2.0000000596046448, 59.00000175833702, 131.00000390410423, 22.0 ],
                     "textcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
-                    "varname": "pad_spread_ui"
+                    "varname": "pad_voice_grouping_ui"
                 }
             },
             {
@@ -249,18 +326,7 @@
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 43.5, 220.0, 101.0, 22.0 ],
-                    "text": "r m_pad_position"
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-84",
-                    "maxclass": "newobj",
-                    "numinlets": 0,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 170.0, 220.0, 90.0, 22.0 ],
-                    "text": "r m_pad_range"
+                    "text": "r m_pad_register"
                 }
             },
             {
@@ -346,7 +412,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 443.0, 113.0, 60.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 105.0, 86.0, 58.0, 22.0 ],
+                    "presentation_rect": [ 110.00000327825546, 85.0000025331974, 51.5, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_lcd_bg"
@@ -463,96 +529,31 @@
             },
             {
                 "box": {
-                    "id": "obj-lbl-pos",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 21.0, 133.0, 110.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 7.0, 40.0, 94.0, 20.0 ],
-                    "saved_attribute_attributes": {
-                        "textcolor": {
-                            "expression": "themecolor.live_lcd_title"
-                        }
-                    },
-                    "text": "Position",
-                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-lbl-range",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 156.0, 133.0, 100.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 109.0, 40.0, 45.0, 20.0 ],
-                    "saved_attribute_attributes": {
-                        "textcolor": {
-                            "expression": "themecolor.live_lcd_title"
-                        }
-                    },
-                    "text": "Range",
-                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
-                }
-            },
-            {
-                "box": {
                     "id": "obj-lbl-spread",
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 276.0, 133.0, 100.0, 20.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 153.75, 40.0, 52.5, 20.0 ],
+                    "presentation_rect": [ 2.0000000596046448, 40.000001192092896, 92.0, 20.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
                         }
                     },
-                    "text": "Spread",
+                    "text": "Voice Grouping",
                     "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
                 }
             },
             {
                 "box": {
-                    "id": "obj-lbl-strum",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 405.0, 88.0, 59.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 8.0, 86.0, 43.0, 20.0 ],
-                    "saved_attribute_attributes": {
-                        "textcolor": {
-                            "expression": "themecolor.live_lcd_title"
-                        }
-                    },
-                    "text": "Strum",
-                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-prepend-position",
+                    "id": "obj-prepend-register",
                     "maxclass": "newobj",
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 26.0, 250.0, 120.0, 22.0 ],
-                    "text": "prepend position"
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-prepend-range",
-                    "maxclass": "newobj",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 151.0, 250.0, 110.0, 22.0 ],
-                    "text": "prepend range"
+                    "patching_rect": [ 26, 250, 120, 22 ],
+                    "text": "prepend register"
                 }
             },
             {
@@ -680,13 +681,13 @@
             },
             {
                 "box": {
-                    "id": "mm-pad-position-ui-r",
+                    "id": "mm-pad-register-ui-r",
                     "maxclass": "newobj",
                     "numinlets": 0,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 650.0, 220.0, 118.0, 22.0 ],
-                    "text": "r m_pad_position_ui"
+                    "patching_rect": [ 650, 220, 118, 22 ],
+                    "text": "r m_pad_register_ui"
                 }
             },
             {
@@ -805,7 +806,7 @@
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 849.0, 412.0, 109.0, 22.0 ],
-                    "text": "r pad_chord_invert"
+                    "text": "r pad_inversion"
                 }
             },
             {
@@ -816,7 +817,7 @@
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 849.0, 442.0, 122.0, 22.0 ],
-                    "text": "prepend chord_invert"
+                    "text": "prepend inversion"
                 }
             },
             {
@@ -931,7 +932,7 @@
             },
             {
                 "box": {
-                    "bgcolor": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1.0 ],
+                    "bgcolor": [ 0.09411764705882353, 0.09411764705882353, 0.09411764705882353, 0.01 ],
                     "checkedcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
                     "id": "pad-strum-on-toggle",
                     "maxclass": "toggle",
@@ -941,11 +942,8 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 520.0, 113.0, 20.0, 20.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 53.0, 86.0, 20.0, 20.0 ],
+                    "presentation_rect": [ 41.00000122189522, 86.00000256299973, 20.0, 20.0 ],
                     "saved_attribute_attributes": {
-                        "bgcolor": {
-                            "expression": "themecolor.live_lcd_bg"
-                        },
                         "checkedcolor": {
                             "expression": "themecolor.live_play"
                         },
@@ -955,24 +953,6 @@
                     },
                     "uncheckedcolor": [ 1.0, 0.490196078431373, 0.262745098039216, 1.0 ],
                     "varname": "pad_strum_on"
-                }
-            },
-            {
-                "box": {
-                    "id": "pad-strum-on-label",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 542.0, 113.0, 25.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 75.0, 87.0, 27.0, 20.0 ],
-                    "saved_attribute_attributes": {
-                        "textcolor": {
-                            "expression": "themecolor.live_lcd_title"
-                        }
-                    },
-                    "text": "On",
-                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
                 }
             },
             {
@@ -988,7 +968,7 @@
             },
             {
                 "box": {
-                    "bgcolor": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1.0 ],
+                    "bgcolor": [ 0.09411764705882353, 0.09411764705882353, 0.09411764705882353, 0.01 ],
                     "checkedcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
                     "id": "pad-strum-group-toggle",
                     "ignoreclick": 1,
@@ -999,11 +979,8 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 640.0, 113.0, 20.0, 20.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 170.0, 86.0, 20.0, 20.0 ],
+                    "presentation_rect": [ 77.00000229477882, 86.00000256299973, 20.0, 20.0 ],
                     "saved_attribute_attributes": {
-                        "bgcolor": {
-                            "expression": "themecolor.live_lcd_bg"
-                        },
                         "checkedcolor": {
                             "expression": "themecolor.live_play"
                         },
@@ -1013,24 +990,6 @@
                     },
                     "uncheckedcolor": [ 1.0, 0.490196078431373, 0.262745098039216, 1.0 ],
                     "varname": "pad_strum_group"
-                }
-            },
-            {
-                "box": {
-                    "id": "pad-strum-group-label",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 662.0, 113.0, 120.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 192.0, 87.0, 34.0, 20.0 ],
-                    "saved_attribute_attributes": {
-                        "textcolor": {
-                            "expression": "themecolor.live_lcd_title"
-                        }
-                    },
-                    "text": "Grp",
-                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ]
                 }
             },
             {
@@ -1079,38 +1038,6 @@
                     "bgfillcolor_type": "color",
                     "fontsize": 9.0,
                     "gradient": 1,
-                    "id": "pad-position-display",
-                    "ignoreclick": 1,
-                    "maxclass": "message",
-                    "numinlets": 2,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 26.0, 185.0, 31.0, 19.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 3.0, 60.25, 29.0, 19.0 ],
-                    "saved_attribute_attributes": {
-                        "textcolor": {
-                            "expression": "themecolor.live_lcd_title"
-                        }
-                    },
-                    "text": "50",
-                    "textcolor": [ 0.768399306904929, 0.768399117237748, 0.7683991666346, 1.0 ],
-                    "varname": "pad_position_display"
-                }
-            },
-            {
-                "box": {
-                    "bgcolor": [ 0.208680531953877, 0.20868047419733, 0.208680489290039, 1 ],
-                    "bgcolor2": [ 0.208680531953877, 0.20868047419733, 0.208680489290039, 1 ],
-                    "bgfillcolor_angle": 270,
-                    "bgfillcolor_autogradient": 0.0,
-                    "bgfillcolor_color": [ 0, 0.980392156862745, 0.63921568627451, 0 ],
-                    "bgfillcolor_color1": [ 0.208680531953877, 0.20868047419733, 0.208680489290039, 1 ],
-                    "bgfillcolor_color2": [ 0.208680531953877, 0.20868047419733, 0.208680489290039, 1 ],
-                    "bgfillcolor_proportion": 0.5,
-                    "bgfillcolor_type": "color",
-                    "fontsize": 9.0,
-                    "gradient": 1,
                     "id": "pad-velocity-display",
                     "ignoreclick": 1,
                     "maxclass": "message",
@@ -1119,7 +1046,7 @@
                     "outlettype": [ "" ],
                     "patching_rect": [ 400.0, 518.0, 29.0, 19.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 297.0, 60.5, 24.0, 19.0 ],
+                    "presentation_rect": [ 299.0000089108944, 40.333334535360336, 24.0, 19.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -1138,7 +1065,7 @@
                     "numoutlets": 0,
                     "patching_rect": [ 400.0, 420.0, 80.0, 20.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 204.5, 40.0, 51.0, 20.0 ],
+                    "presentation_rect": [ 159.3333380818367, 40.000001192092896, 50.33333483338356, 20.0 ],
                     "saved_attribute_attributes": {
                         "textcolor": {
                             "expression": "themecolor.live_lcd_title"
@@ -1150,23 +1077,12 @@
             },
             {
                 "box": {
-                    "id": "pad-position-feedback-set",
+                    "id": "pad-register-feedback-set",
                     "maxclass": "newobj",
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 43.0, 280.0, 95.0, 22.0 ],
-                    "text": "prepend modset"
-                }
-            },
-            {
-                "box": {
-                    "id": "pad-range-feedback-set",
-                    "maxclass": "newobj",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 200.0, 280.0, 75.0, 22.0 ],
+                    "patching_rect": [ 43, 280, 95, 22 ],
                     "text": "prepend set"
                 }
             },
@@ -1194,24 +1110,13 @@
             },
             {
                 "box": {
-                    "id": "pad-position-preview",
+                    "id": "pad-register-select",
                     "maxclass": "newobj",
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 26.0, 310.0, 145.0, 22.0 ],
-                    "text": "prepend position_preview"
-                }
-            },
-            {
-                "box": {
-                    "id": "pad-range-preview",
-                    "maxclass": "newobj",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 170.0, 310.0, 135.0, 22.0 ],
-                    "text": "prepend range_preview"
+                    "patching_rect": [ 26, 310, 145, 22 ],
+                    "text": "prepend register_select"
                 }
             },
             {
@@ -1221,8 +1126,8 @@
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 300.0, 310.0, 141.0, 22.0 ],
-                    "text": "prepend spread_preview"
+                    "patching_rect": [ 300.0, 310.0, 175.0, 22.0 ],
+                    "text": "prepend voice_grouping_select"
                 }
             },
             {
@@ -1294,50 +1199,44 @@
             {
                 "box": {
                     "bgcolor": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1.0 ],
-                    "checkedcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
+                    "bgfillcolor_color": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1 ],
+                    "bgfillcolor_color1": [ 0.208680531953877, 0.20868047419733, 0.208680489290039, 1 ],
+                    "bgfillcolor_color2": [ 0.208680531953877, 0.20868047419733, 0.208680489290039, 1 ],
+                    "bgfillcolor_type": "color",
                     "id": "pad-invert-toggle",
-                    "maxclass": "toggle",
+                    "items": [ "No Inversion", ",", "1st Inversion", ",", "2nd Inversion", ",", "Drop 2", ",", "Drop 2 & 3", ",", "7ths Inverted", ",", "Octaves & Inverted 3rds" ],
+                    "maxclass": "umenu",
                     "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "int" ],
+                    "numoutlets": 3,
+                    "outlettype": [ "int", "", "" ],
                     "parameter_enable": 1,
-                    "patching_rect": [ 900.0, 352.0, 20.0, 20.0 ],
+                    "patching_rect": [ 900.0, 352.0, 135.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 226.0, 86.0, 20.0, 20.0 ],
+                    "presentation_rect": [ 126.83333711326122, 59.00000175833702, 193.16667242348194, 22.0 ],
                     "saved_attribute_attributes": {
-                        "bgcolor": {
-                            "expression": "themecolor.live_lcd_bg"
-                        },
-                        "checkedcolor": {
-                            "expression": "themecolor.live_play"
-                        },
-                        "uncheckedcolor": {
-                            "expression": "themecolor.live_alert"
-                        },
                         "valueof": {
-                            "parameter_enum": [ "off", "on" ],
+                            "parameter_enum": [ "No Inversion", "1st Inversion", "2nd Inversion", "Drop 2", "Drop 2 & 3", "7ths Inverted", "Octaves & Inverted 3rds" ],
                             "parameter_initial": [ 0 ],
                             "parameter_initial_enable": 1,
-                            "parameter_longname": "Pad Chord Invert",
-                            "parameter_mmax": 1,
+                            "parameter_longname": "Pad Inversion",
+                            "parameter_mmax": 6,
                             "parameter_modmode": 0,
-                            "parameter_shortname": "Invert",
+                            "parameter_shortname": "Inversion",
                             "parameter_type": 2
                         }
                     },
-                    "uncheckedcolor": [ 1.0, 0.490196078431373, 0.262745098039216, 1.0 ],
-                    "varname": "pad_chord_invert_toggle"
+                    "textcolor": [ 0, 0.980392156862745, 0.63921568627451, 1 ],
+                    "varname": "pad_inversion_menu"
                 }
             },
             {
                 "box": {
+                    "hidden": 1,
                     "id": "pad-invert-label",
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 925.0, 352.0, 44.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 247.0, 87.0, 28.0, 20.0 ],
                     "text": "Inv"
                 }
             },
@@ -1366,9 +1265,9 @@
                     "numoutlets": 3,
                     "outlettype": [ "int", "", "" ],
                     "parameter_enable": 1,
-                    "patching_rect": [ 975.0, 352.0, 52.0, 22.0 ],
+                    "patching_rect": [ 1050.0, 352.0, 52.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 275.0, 86.0, 46.0, 22.0 ],
+                    "presentation_rect": [ 278.6666749715805, 85.0000025331974, 41.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "valueof": {
                             "parameter_enum": [ "None", "1/4", "1/8" ],
@@ -1446,17 +1345,6 @@
             },
             {
                 "box": {
-                    "id": "mm-pad-range-ui-r",
-                    "maxclass": "newobj",
-                    "numinlets": 0,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 420.0, 95.0, 112.0, 22.0 ],
-                    "text": "r m_pad_range_ui"
-                }
-            },
-            {
-                "box": {
                     "id": "mm-pad-spread-ui-r",
                     "maxclass": "newobj",
                     "numinlets": 0,
@@ -1476,6 +1364,38 @@
                     "patching_rect": [ 420.0, 155.0, 112.0, 22.0 ],
                     "text": "r m_pad_strum_ui"
                 }
+            },
+            {
+                "box": {
+                    "id": "mm-pad-inversion-ui-r",
+                    "maxclass": "newobj",
+                    "numinlets": 0,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 420, 185, 132, 22 ],
+                    "text": "r m_pad_inversion_ui"
+                }
+            },
+            {
+                "box": {
+                    "id": "pad-inversion-base-p",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 900, 385, 176, 22 ],
+                    "text": "prepend setbase pad_inversion"
+                }
+            },
+            {
+                "box": {
+                    "id": "pad-inversion-base-s",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 1080, 385, 75, 22 ],
+                    "text": "s mod_input"
+                }
             }
         ],
         "lines": [
@@ -1483,6 +1403,12 @@
                 "patchline": {
                     "destination": [ "mc_s_pad", 0 ],
                     "source": [ "mc_num_pad", 0 ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [ "pad-invert-ui-set", 0 ],
+                    "source": [ "mm-pad-inversion-ui-r", 0 ]
                 }
             },
             {
@@ -1511,22 +1437,8 @@
             },
             {
                 "patchline": {
-                    "destination": [ "pad-position-display", 1 ],
-                    "order": 0,
-                    "source": [ "mm-pad-position-ui-r", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "pad-position-feedback-set", 0 ],
-                    "order": 1,
-                    "source": [ "mm-pad-position-ui-r", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "pad-range-feedback-set", 0 ],
-                    "source": [ "mm-pad-range-ui-r", 0 ]
+                    "destination": [ "pad-register-feedback-set", 0 ],
+                    "source": [ "mm-pad-register-ui-r", 0 ]
                 }
             },
             {
@@ -1634,22 +1546,8 @@
             },
             {
                 "patchline": {
-                    "destination": [ "pad-position-display", 1 ],
-                    "order": 0,
+                    "destination": [ "pad-register-select", 0 ],
                     "source": [ "obj-15", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "pad-position-preview", 0 ],
-                    "order": 1,
-                    "source": [ "obj-15", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "pad-range-preview", 0 ],
-                    "source": [ "obj-16", 0 ]
                 }
             },
             {
@@ -1751,43 +1649,15 @@
             },
             {
                 "patchline": {
-                    "destination": [ "obj-16", 0 ],
+                    "destination": [ "obj-prepend-register", 0 ],
                     "order": 1,
-                    "source": [ "obj-84", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "obj-prepend-range", 0 ],
-                    "order": 2,
-                    "source": [ "obj-84", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "pad-range-feedback-set", 0 ],
-                    "order": 0,
-                    "source": [ "obj-84", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "obj-prepend-position", 0 ],
-                    "order": 2,
                     "source": [ "obj-89", 0 ]
                 }
             },
             {
                 "patchline": {
-                    "destination": [ "pad-position-display", 1 ],
+                    "destination": [ "pad-register-feedback-set", 0 ],
                     "order": 0,
-                    "source": [ "obj-89", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "pad-position-feedback-set", 0 ],
-                    "order": 1,
                     "source": [ "obj-89", 0 ]
                 }
             },
@@ -1889,13 +1759,7 @@
             {
                 "patchline": {
                     "destination": [ "obj-js", 0 ],
-                    "source": [ "obj-prepend-position", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "obj-js", 0 ],
-                    "source": [ "obj-prepend-range", 0 ]
+                    "source": [ "obj-prepend-register", 0 ]
                 }
             },
             {
@@ -1972,6 +1836,12 @@
             },
             {
                 "patchline": {
+                    "destination": [ "pad-inversion-base-s", 0 ],
+                    "source": [ "pad-inversion-base-p", 0 ]
+                }
+            },
+            {
+                "patchline": {
                     "destination": [ "obj-js", 0 ],
                     "source": [ "pad-invert-p", 0 ]
                 }
@@ -1992,7 +1862,15 @@
             },
             {
                 "patchline": {
+                    "destination": [ "pad-inversion-base-p", 0 ],
+                    "order": 0,
+                    "source": [ "pad-invert-toggle", 0 ]
+                }
+            },
+            {
+                "patchline": {
                     "destination": [ "pad-invert-p", 0 ],
+                    "order": 1,
                     "source": [ "pad-invert-toggle", 0 ]
                 }
             },
@@ -2018,18 +1896,6 @@
                 "patchline": {
                     "destination": [ "pad-polychain-p", 0 ],
                     "source": [ "pad-polychain-r", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "obj-15", 0 ],
-                    "source": [ "pad-position-feedback-set", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "obj-js", 0 ],
-                    "source": [ "pad-position-preview", 0 ]
                 }
             },
             {
@@ -2066,14 +1932,14 @@
             },
             {
                 "patchline": {
-                    "destination": [ "obj-16", 0 ],
-                    "source": [ "pad-range-feedback-set", 0 ]
+                    "destination": [ "obj-15", 0 ],
+                    "source": [ "pad-register-feedback-set", 0 ]
                 }
             },
             {
                 "patchline": {
                     "destination": [ "obj-js", 0 ],
-                    "source": [ "pad-range-preview", 0 ]
+                    "source": [ "pad-register-select", 0 ]
                 }
             },
             {
@@ -2197,6 +2063,21 @@
                     "source": [ "unpack-off-pad", 0 ]
                 }
             }
-        ]
+        ],
+        "parameters": {
+            "obj-2": [ "live.tab[9]", "live.tab", 0 ],
+            "pad-invert-toggle": [ "Pad Inversion", "Inversion", 0 ],
+            "pad-quant-menu": [ "Pad Quantization", "Pad Quant", 0 ],
+            "parameterbanks": {
+                "0": {
+                    "index": 0,
+                    "name": "",
+                    "parameters": [ "-", "-", "-", "-", "-", "-", "-", "-" ],
+                    "buttons": [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+                }
+            },
+            "inherited_shortname": 1
+        },
+        "autosave": 0
     }
 }

@@ -2,6 +2,8 @@ autowatch = 1;
 inlets = 1;
 outlets = 1;
 
+include("scaler_scale_data.js");
+
 var enabled = false;
 var midiChannel = 16;
 var keyIndex = 0;
@@ -13,17 +15,11 @@ var status = 0, data = [];
 var held = {};
 
 var KEY_MIDI = [0,7,2,9,4,11,6,1,8,3,10,5];
-var MODES = [
-    [0,2,4,5,7,9,11],[0,2,3,5,7,9,10],[0,1,3,5,7,8,10],
-    [0,2,4,6,7,9,11],[0,2,4,5,7,9,10],[0,2,3,5,7,8,10],
-    [0,1,3,5,6,8,10],[0,2,3,6,7,8,10],[0,2,3,5,7,8,11],
-    [0,3,5,7,10],[0,2,4,6,8,10],[0,2],[0,4],[0,5],[0,9]
-];
 
 function clampNote(n) { return Math.max(0, Math.min(127, Math.round(n))); }
 function rebuildScale() {
     var root = KEY_MIDI[Math.max(0, Math.min(11, keyIndex))];
-    var ints = MODES[Math.max(0, Math.min(MODES.length - 1, modeIndex))] || MODES[0];
+    var ints = scalerScaleIntervals(modeIndex);
     scaleClasses = [];
     for (var i = 0; i < ints.length; i++) scaleClasses.push((root + ints[i]) % 12);
 }
@@ -78,7 +74,8 @@ function refreshHeld() {
 function enable(v) { enabled = v ? true : false; if (!enabled) allnotesoff(); }
 function channel(v) { allnotesoff(); midiChannel = Math.max(1, Math.min(16, Math.round(v))); }
 function key(v) { keyIndex = Math.max(0, Math.min(11, Math.round(v))); rebuildScale(); if (enabled) refreshHeld(); }
-function mode(v) { modeIndex = Math.max(0, Math.min(14, Math.round(v))); rebuildScale(); if (enabled) refreshHeld(); }
+function mode(v) { modeIndex = Math.max(0, Math.min(SCALER_SCALE_COUNT - 1, Math.round(v))); rebuildScale(); if (enabled) refreshHeld(); }
+function scale_index(v) { mode(v); }
 function reload_pattern() { loadPattern40(); }
 
 function loadPattern40() {

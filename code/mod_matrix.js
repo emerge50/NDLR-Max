@@ -40,8 +40,8 @@
 //   9=midi_vel 10=midi_pb 11=midi_cc 12=midi_at
 //
 // DESTINATIONS (index):
-//   0=none 1=key 2=mode 3=degree 4=chord_type
-//   5=pad_on 6=pad_position 7=pad_range 8=pad_spread 9=pad_strum 10=pad_velocity
+//   0=none 1=key 2=scales 3=degree 4=color
+//   5=pad_on 6=pad_register 7=pad_voice_grouping 8=pad_inversion 9=pad_strum 10=pad_velocity
 //   11=drone_on 12=drone_position 13=drone_type 14=drone_trigger 15=drone_velocity
 //   16=motif1_on 17=motif1_position 18=motif1_pattern 19=motif1_pattlen
 //   20=motif1_variation 21=motif1_clkdiv 22=motif1_velocity
@@ -67,7 +67,7 @@ var SOURCES = [
 
 var DESTS = [
     'none','key','mode','degree','chord_type',
-    'pad_on','pad_position','pad_range','pad_spread',
+    'pad_on','pad_register','pad_spread','pad_inversion',
     'pad_strum','pad_velocity',
     'drone_on','drone_position','drone_type','drone_trigger','drone_velocity',
     'motif1_on','motif1_position','motif1_pattern','motif1_pattlen',
@@ -88,8 +88,8 @@ DESTS.push('midi_cc');
 
 // [min, max] pour chaque destination
 var RANGES = {
-    key:[0,11], mode:[0,27], degree:[0,6], chord_type:[0,17],
-    pad_position:[0,100], pad_range:[1,22], pad_spread:[1,6], pad_strum:[1,21],
+    key:[0,11], mode:[0,76], degree:[0,6], chord_type:[0,8],
+    pad_register:[-2,2], pad_spread:[0,14], pad_inversion:[0,6], pad_strum:[1,21],
     drone_position:[0,4], drone_type:[1,4], drone_trigger:[1,19], drone_velocity:[1,127],
     motif1_position:[0,4], motif1_pattern:[1,40], motif1_pattlen:[1,16],
     motif1_variation:[1,6], motif1_clkdiv:[1,21], motif1_velocity:[0,127],
@@ -250,7 +250,7 @@ var delayedUiInitTask = null;
 // Valeurs de base de toutes les destinations (mises à jour depuis ndlr_main)
 var baseVals = {
     key:0, mode:0, degree:0, chord_type:0,
-    pad_position:50, pad_range:7, pad_spread:1, pad_strum:17,
+    pad_register:0, pad_spread:0, pad_inversion:0, pad_strum:17,
     drone_position:3, drone_type:1, drone_trigger:1, drone_velocity:64,
     motif1_position:2, motif1_pattern:1, motif1_pattlen:8,
     motif1_variation:1, motif1_clkdiv:3, motif1_velocity:100,
@@ -575,9 +575,9 @@ function emitDestination(dest, value, slotConfig) {
 function emitDestinationFeedback(dest, value) {
     var feedback = {
         pad_on:'m_pad_on_ui',
-        pad_position:'m_pad_position_ui',
-        pad_range:'m_pad_range_ui',
+        pad_register:'m_pad_register_ui',
         pad_spread:'m_pad_spread_ui',
+        pad_inversion:'m_pad_inversion_ui',
         pad_strum:'m_pad_strum_ui',
         pad_velocity:'m_pad_velocity_ui',
         drone_on:'m_drone_on_ui',
@@ -662,6 +662,9 @@ function part_active(part, active) {
 }
 
 function destinationLabel(dest) {
+    if (dest === 'mode') return 'scales';
+    if (dest === 'chord_type') return 'color';
+    if (dest === 'pad_spread') return 'pad voice grouping';
     if (dest === 'midi_cc') return 'midi cc';
     if (dest === 'pnoise_brightness') return 'perlin noise lum';
     if (dest === 'motif1_active_pattern') return 'm1 active pattern';

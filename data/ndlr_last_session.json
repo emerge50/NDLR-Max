@@ -330,7 +330,7 @@
     "root/obj-54[1]/pad_quant_menu": [
       0
     ],
-    "root/obj-54[1]/pad_chord_invert_toggle": [
+    "root/obj-54[1]/pad_inversion_menu": [
       0
     ],
     "root/obj-54[1]/pad_strum_group": [
@@ -348,22 +348,16 @@
     "root/obj-54[1]/pad_run": [
       -1
     ],
-    "root/obj-54[1]/pad_spread_ui": [
-      1
-    ],
-    "root/obj-54[1]/pad_range_ui": [
-      1
-    ],
-    "root/obj-54[1]/pad_humanize_slider": [
-      50
+    "root/obj-54[1]/pad_voice_grouping_ui": [
+      0
     ],
     "root/obj-54[1]/pad_velocity_slider": [
       64
     ],
-    "root/obj-47": [
+    "root/color_menu": [
       0
     ],
-    "root/obj-48": [
+    "root/scale_menu": [
       0
     ],
     "root/obj-57[1]/motif2_accent": [
@@ -572,6 +566,9 @@
       0
     ],
     "root/obj-47[2]": [
+      0
+    ],
+    "root/obj-54[1]/pad_register_number": [
       0
     ]
   }

@@ -9,13 +9,76 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 28.0, 68.0, 1189.0, 792.0 ],
+        "rect": [ 76.0, 212.0, 1189.0, 792.0 ],
         "openinpresentation": 1,
         "statusbarvisible": 0,
         "toolbarvisible": 0,
         "enablehscroll": 0,
         "enablevscroll": 0,
         "boxes": [
+            {
+                "box": {
+                    "id": "obj-30",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 163.0, 19.0, 82.0, 20.0 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 183.0, 17.0, 77.0, 20.0 ],
+                    "text": "MIDI CC in"
+                }
+            },
+            {
+                "box": {
+                    "id": "key-midi-channel-label",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 70.0, 257.0, 82.0, 20.0 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 183.0, 64.44444444444444, 77.0, 20.0 ],
+                    "text": "Key MIDI Ch"
+                }
+            },
+            {
+                "box": {
+                    "id": "degree-midi-channel-label",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 162.0, 257.0, 97.0, 20.0 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 183.0, 111.88888888888889, 103.0, 20.0 ],
+                    "text": "Degree MIDI Ch"
+                }
+            },
+            {
+                "box": {
+                    "fontname": "Arial",
+                    "id": "obj-lbl-mode",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 309.5, 47.0, 82.0, 20.0 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 183.0, 159.33333333333334, 56.0, 20.0 ],
+                    "text": "SCALES",
+                    "varname": "obj-40"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-lbl-type",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 76.5, 44.5, 80.0, 20.0 ],
+                    "presentation": 1,
+                    "presentation_rect": [ 183.0, 206.7777777777778, 51.0, 20.0 ],
+                    "text": "COLOR",
+                    "varname": "obj-38"
+                }
+            },
             {
                 "box": {
                     "filename": "reload_button_jsui.js",
@@ -74,7 +137,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 76.0, 323.0, 39.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 183.0, 87.16666666666666, 99.0, 22.0 ],
+                    "presentation_rect": [ 183.0, 80.0, 99.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_meter_bg"
@@ -109,7 +172,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 159.0, 323.0, 39.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 183.0, 134.61111111111111, 99.0, 22.0 ],
+                    "presentation_rect": [ 183.0, 128.0, 99.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_meter_bg"
@@ -123,18 +186,6 @@
                     },
                     "textcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
                     "varname": "obj-47[1]"
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-30",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 163.0, 19.0, 82.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 183.0, 17.0, 77.0, 20.0 ],
-                    "text": "MIDI CC in"
                 }
             },
             {
@@ -690,7 +741,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 631.0, 280.0, 146.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 183.0, 39.72222222222222, 133.0, 22.0 ],
+                    "presentation_rect": [ 183.0, 32.0, 133.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_meter_bg"
@@ -1078,7 +1129,7 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 1306.4545454545455, 76.0, 103.0, 22.0 ],
-                    "text": "s m_pad_position",
+                    "text": "s m_pad_register",
                     "varname": "obj-126"
                 }
             },
@@ -1089,7 +1140,7 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 1432.3181818181818, 76.0, 92.0, 22.0 ],
-                    "text": "s m_pad_range",
+                    "text": "s pad_inversion",
                     "varname": "obj-125"
                 }
             },
@@ -1606,37 +1657,14 @@
             },
             {
                 "box": {
-                    "id": "obj-40",
-                    "maxclass": "newobj",
-                    "numinlets": 0,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 1028.5, 203.0, 73.0, 22.0 ],
-                    "text": "r pad_range",
-                    "varname": "obj-80"
-                }
-            },
-            {
-                "box": {
                     "id": "obj-39",
                     "maxclass": "newobj",
                     "numinlets": 0,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 853.5, 203.0, 84.0, 22.0 ],
-                    "text": "r pad_position",
+                    "text": "r pad_register",
                     "varname": "obj-79"
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-38",
-                    "maxclass": "newobj",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 1028.5, 257.0, 80.0, 22.0 ],
-                    "text": "s mod_base",
-                    "varname": "obj-78"
                 }
             },
             {
@@ -1834,14 +1862,15 @@
                     "gradient": 1,
                     "id": "obj-8",
                     "ignoreclick": 1,
+                    "linecount": 2,
                     "maxclass": "message",
                     "numinlets": 2,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 7.0, 1080.0, 257.0, 18.0 ],
+                    "patching_rect": [ 7.0, 1080.0, 257.0, 28.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 293.0, 245.0, 222.0, 18.0 ],
-                    "text": "C-Major-I-Triad",
+                    "presentation_rect": [ 183.0, 248.0, 339.0, 18.0 ],
+                    "text": "\"C-Super-Locrian Diminished-I-Suspended 4ths, 7ths & 9ths\"",
                     "textcolor": [ 0.85, 0.85, 0.85, 1.0 ],
                     "textjustification": 1,
                     "varname": "obj-61"
@@ -2028,7 +2057,7 @@
                     "bgfillcolor_type": "color",
                     "elementcolor": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1.0 ],
                     "id": "obj-47",
-                    "items": [ "Major", ",", "Dorian", ",", "Phrygian", ",", "Lydian", ",", "Mixolydian", ",", "Minor", ",", "Locrian", ",", "Gypsy Min", ",", "Harm. Minor", ",", "Minor Penta", ",", "Whole Tone", ",", "Tonic 2nds", ",", "Tonic 3rds", ",", "Tonic 4ths", ",", "Tonic 6ths", ",", "Major Penta", ",", "Blues", ",", "Melodic Min", ",", "Dorian b2", ",", "Lydian Aug", ",", "Lydian Dom", ",", "Mixo b6", ",", "Locrian #2", ",", "Altered", ",", "Phryg. Dom", ",", "Byzantine", ",", "Dim H-W", ",", "Augmented" ],
+                    "items": [ "Major", ",", "Dorian", ",", "Phrygian", ",", "Lydian", ",", "Mixolydian", ",", "Minor", ",", "Locrian", ",", "Harmonic Major", ",", "Dorian b5", ",", "Phrygian b4", ",", "Lydian b3", ",", "Mixolydian b2", ",", "Lydian Augmented #2", ",", "Locrian Diminished", ",", "Harmonic Minor", ",", "Locrian nat. 6", ",", "Ionian Augmented", ",", "Ukrainian Dorian", ",", "Phrygian Dominant", ",", "Lydian #2", ",", "Super-Locrian Diminished", ",", "Melodic Minor (asc)", ",", "Dorian b2", ",", "Lydian Augmented", ",", "Acoustic", ",", "Mixolydian b6", ",", "Half Diminished", ",", "Altered", ",", "Neapolitan Major", ",", "Lydian Augmented #6", ",", "Lydian Augmented Dominant", ",", "Lydian b6 Dominant", ",", "Major Locrian", ",", "Super-Locrian nat. 2", ",", "Super-Locrian bb3", ",", "Neapolitan Minor", ",", "Lydian #6", ",", "Mixolydian Augmented", ",", "Hungarian Gypsy", ",", "Locrian nat. 3", ",", "Ionian #2", ",", "Super-Locrian Diminished bb3", ",", "Double Harmonic Major", ",", "Lydian #2 #6", ",", "Ultraphrygian", ",", "Hungarian Minor", ",", "Oriental", ",", "Ionian Augmented #2", ",", "Locrian Diminished bb3", ",", "Persian", ",", "Persian mode 2", ",", "Persian mode 3", ",", "Persian mode 4", ",", "Persian mode 5", ",", "Persian mode 6", ",", "Persian mode 7", ",", "Major Pentatonic", ",", "Egyptian Pentatonic", ",", "Man Gong Pentatonic", ",", "Ritsusen Pentatonic", ",", "Minor Pentatonic", ",", "Major Blues Hexatonic", ",", "Major Blues Hexatonic mode 2", ",", "Major Blues Hexatonic mode 3", ",", "Major Blues Hexatonic mode 4", ",", "Major Blues Hexatonic mode 5", ",", "Minor Blues Hexatonic", ",", "Hirajoshi", ",", "Iwato", ",", "Kumoi", ",", "Insen", ",", "Ritsu", ",", "In", ",", "Ryo", ",", "Minyo", ",", "Yo", ",", "Whole" ],
                     "maxclass": "umenu",
                     "numinlets": 1,
                     "numoutlets": 3,
@@ -2036,7 +2065,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 266.5, 17.0, 92.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 183.0, 182.05555555555557, 99.0, 22.0 ],
+                    "presentation_rect": [ 183.0, 175.0, 99.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_meter_bg"
@@ -2049,7 +2078,7 @@
                         }
                     },
                     "textcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
-                    "varname": "obj-48"
+                    "varname": "scale_menu"
                 }
             },
             {
@@ -2063,7 +2092,7 @@
                     "bgfillcolor_type": "color",
                     "elementcolor": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1.0 ],
                     "id": "obj-46",
-                    "items": [ "Triad", ",", "7th", ",", "sus2", ",", "sus4", ",", "6th", ",", "mu/add2", ",", "add9", ",", "9th", ",", "quartal", ",", "power", ",", "shell", ",", "quintal", ",", "11th", ",", "13th", ",", "cluster", ",", "shell9", ",", "open9", ",", "So What" ],
+                    "items": [ "Triads", ",", "7ths", ",", "9ths", ",", "11ths", ",", "13ths", ",", "Suspended", ",", "6ths & 7ths", ",", "Minor 7ths & 9ths", ",", "Suspended 4ths, 7ths & 9ths" ],
                     "maxclass": "umenu",
                     "numinlets": 1,
                     "numoutlets": 3,
@@ -2071,7 +2100,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [ 16.5, 43.5, 73.0, 22.0 ],
                     "presentation": 1,
-                    "presentation_rect": [ 183.0, 229.50000000000003, 99.0, 22.0 ],
+                    "presentation_rect": [ 183.0, 223.0, 99.0, 22.0 ],
                     "saved_attribute_attributes": {
                         "bgfillcolor": {
                             "expression": "themecolor.live_meter_bg"
@@ -2084,7 +2113,7 @@
                         }
                     },
                     "textcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
-                    "varname": "obj-47"
+                    "varname": "color_menu"
                 }
             },
             {
@@ -2123,30 +2152,6 @@
                     "presentation": 1,
                     "presentation_rect": [ 15.0, 219.0, 163.0, 43.0 ],
                     "varname": "obj-44"
-                }
-            },
-            {
-                "box": {
-                    "id": "key-midi-channel-label",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 70.0, 257.0, 82.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 183.0, 64.44444444444444, 77.0, 20.0 ],
-                    "text": "Key MIDI Ch"
-                }
-            },
-            {
-                "box": {
-                    "id": "degree-midi-channel-label",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 162.0, 257.0, 97.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 183.0, 111.88888888888889, 103.0, 20.0 ],
-                    "text": "Degree MIDI Ch"
                 }
             },
             {
@@ -2233,33 +2238,6 @@
                     "text": "NDLR MAX",
                     "textcolor": [ 0.0, 0.980392156862745, 0.63921568627451, 1.0 ],
                     "varname": "obj-42"
-                }
-            },
-            {
-                "box": {
-                    "fontname": "Arial",
-                    "id": "obj-lbl-mode",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 309.5, 47.0, 82.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 183.0, 159.33333333333334, 45.0, 20.0 ],
-                    "text": "MODE",
-                    "varname": "obj-40"
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-lbl-type",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "patching_rect": [ 76.5, 44.5, 80.0, 20.0 ],
-                    "presentation": 1,
-                    "presentation_rect": [ 183.0, 206.7777777777778, 41.0, 20.0 ],
-                    "text": "TYPE",
-                    "varname": "obj-38"
                 }
             },
             {
@@ -2468,20 +2446,8 @@
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 853.5, 230.0, 169.0, 22.0 ],
-                    "text": "prepend setbase pad_position",
+                    "text": "prepend setbase pad_register",
                     "varname": "obj-26"
-                }
-            },
-            {
-                "box": {
-                    "id": "mm0010",
-                    "maxclass": "newobj",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 1028.5, 230.0, 159.0, 22.0 ],
-                    "text": "prepend setbase pad_range",
-                    "varname": "obj-25"
                 }
             },
             {
@@ -2636,7 +2602,7 @@
                     "numoutlets": 24,
                     "outlettype": [ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ],
                     "patching_rect": [ 803.0, 41.0, 2913.863636363636, 22.0 ],
-                    "text": "route key mode degree chord_type pad_position pad_range pad_spread pad_strum drone_position drone_type drone_trigger motif1_position motif1_pattern motif1_pattlen motif1_variation motif1_clkdiv motif1_velocity motif2_position motif2_pattern motif2_pattlen motif2_variation motif2_clkdiv motif2_velocity",
+                    "text": "route key mode degree chord_type pad_register pad_inversion pad_spread pad_strum drone_position drone_type drone_trigger motif1_position motif1_pattern motif1_pattlen motif1_variation motif1_clkdiv motif1_velocity motif2_position motif2_pattern motif2_pattlen motif2_variation motif2_clkdiv motif2_velocity",
                     "varname": "obj-12"
                 }
             },
@@ -2722,7 +2688,7 @@
                     "bgfillcolor_type": "color",
                     "elementcolor": [ 0.094525624565048, 0.094525586030663, 0.09452559599708, 1.0 ],
                     "id": "mc_umenu",
-                    "items": [ "AU DLS Synth 1", ",", "Gestionnaire IAC Bus 1", ",", "DLS-MIDI-Synth Virtual In", ",", "from Max 1", ",", "from Max 2" ],
+                    "items": [ "AU DLS Synth 1", ",", "Gestionnaire IAC Bus 1", ",", "from Max 1", ",", "from Max 2", ",", "DLS-MIDI-Synth Virtual In" ],
                     "maxclass": "umenu",
                     "numinlets": 1,
                     "numoutlets": 3,
@@ -3412,12 +3378,6 @@
             },
             {
                 "patchline": {
-                    "destination": [ "obj-38", 0 ],
-                    "source": [ "mm0010", 0 ]
-                }
-            },
-            {
-                "patchline": {
                     "destination": [ "obj-42", 0 ],
                     "source": [ "mm0011", 0 ]
                 }
@@ -3864,12 +3824,6 @@
             },
             {
                 "patchline": {
-                    "destination": [ "mm0010", 0 ],
-                    "source": [ "obj-40", 0 ]
-                }
-            },
-            {
-                "patchline": {
                     "destination": [ "mm0011", 0 ],
                     "source": [ "obj-44", 0 ]
                 }
@@ -4192,7 +4146,7 @@
             "obj-2::obj-6": [ "live.tab[5]", "live.tab", 0 ],
             "obj-2::obj-vha7cc03": [ "motif2_humanize", "motif2_humanize", 0 ],
             "obj-31::obj-2": [ "live.tab[9]", "live.tab", 0 ],
-            "obj-31::pad-invert-toggle": [ "Pad Chord Invert", "Invert", 0 ],
+            "obj-31::pad-invert-toggle": [ "Pad Inversion", "Inversion", 0 ],
             "obj-31::pad-quant-menu": [ "Pad Quantization", "Pad Quant", 0 ],
             "obj-35::obj-11": [ "Patt_editor_M1-M2_sel", "Patt_editor_M1-M2_sel", 0 ],
             "obj-35::obj-15::tt": [ "m1_pattern_type", "type", 0 ],
@@ -4242,6 +4196,11 @@
                 },
                 "obj-130::tt": {
                     "parameter_longname": "m1_pattern_type[2]"
+                },
+                "obj-31::pad-invert-toggle": {
+                    "parameter_invisible": 0,
+                    "parameter_modmode": 0,
+                    "parameter_unitstyle": 10
                 },
                 "obj-35::obj-11": {
                     "parameter_invisible": 0,
