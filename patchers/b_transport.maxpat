@@ -1623,21 +1623,21 @@
             {
                 "patchline": {
                     "destination": [ "obj-22", 0 ],
-                    "order": 2,
+                    "order": 0,
                     "source": [ "obj-17", 0 ]
                 }
             },
             {
                 "patchline": {
                     "destination": [ "obj-6", 0 ],
-                    "order": 1,
+                    "order": 2,
                     "source": [ "obj-17", 0 ]
                 }
             },
             {
                 "patchline": {
                     "destination": [ "obj-75", 0 ],
-                    "order": 0,
+                    "order": 1,
                     "source": [ "obj-17", 0 ]
                 }
             },

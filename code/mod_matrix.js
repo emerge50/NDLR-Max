@@ -89,7 +89,7 @@ DESTS.push('midi_cc');
 // [min, max] pour chaque destination
 var RANGES = {
     key:[0,11], mode:[0,76], degree:[0,6], chord_type:[0,8],
-    pad_register:[-2,2], pad_spread:[0,14], pad_inversion:[0,6], pad_strum:[1,21],
+    pad_register:[-2,2], pad_spread:[0,11], pad_inversion:[0,6], pad_strum:[1,21],
     drone_position:[0,4], drone_type:[1,4], drone_trigger:[1,19], drone_velocity:[1,127],
     motif1_position:[0,4], motif1_pattern:[1,40], motif1_pattlen:[1,16],
     motif1_variation:[1,6], motif1_clkdiv:[1,21], motif1_velocity:[0,127],
@@ -830,6 +830,7 @@ function clearLfoVisualState() {
 }
 
 function start() {
+    var wasRunning = isRunning;
     resetLfoPhases();
     publishResetLfoState();
     isRunning  = true;
@@ -838,10 +839,11 @@ function start() {
     tickTask = new Task(tick, this);
     tickTask.interval = TICK_MS;
     tickTask.repeat();
-    post("mod_matrix: démarré\n");
+    if (!wasRunning) post("mod_matrix: démarré\n");
 }
 
 function stop() {
+    var wasRunning = isRunning;
     isRunning = false;
     if (tickTask) { tickTask.cancel(); tickTask = null; }
     resetActivePatternSlots();
@@ -849,7 +851,7 @@ function stop() {
     restoreLfoDestinationsToBase();
     clearLfoVisualState();
     lastTickMs = 0;
-    post("mod_matrix: arrêté\n");
+    if (wasRunning) post("mod_matrix: arrêté\n");
 }
 
 // lfo [1-8] [param] [value]

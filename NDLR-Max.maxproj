@@ -98,6 +98,38 @@
                 "kind": "javascript",
                 "local": 1
             },
+            "lfo_ui_router.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "slider_0-100.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "motif_builder.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "slider_1-127.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "pattern_active_highlight.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "pattern_active_overlay.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "pattern_multislider.js": {
+                "kind": "javascript",
+                "local": 1
+            },
+            "pattern_slot_marker.js": {
+                "kind": "javascript",
+                "local": 1
+            },
             "chord_builder.js": {
                 "kind": "javascript",
                 "local": 1
@@ -118,15 +150,7 @@
                 "kind": "javascript",
                 "local": 1
             },
-            "lfo_ui_router.js": {
-                "kind": "javascript",
-                "local": 1
-            },
             "mod_matrix.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "motif_builder.js": {
                 "kind": "javascript",
                 "local": 1
             },
@@ -139,22 +163,6 @@
                 "local": 1
             },
             "pad_builder.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "pattern_active_highlight.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "pattern_active_overlay.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "pattern_multislider.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "pattern_slot_marker.js": {
                 "kind": "javascript",
                 "local": 1
             },
@@ -179,14 +187,6 @@
                 "local": 1
             },
             "scaler_scale_data.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "slider_0-100.js": {
-                "kind": "javascript",
-                "local": 1
-            },
-            "slider_1-127.js": {
                 "kind": "javascript",
                 "local": 1
             },
@@ -233,7 +233,7 @@
     "hideprojectwindow": 0,
     "includepackages": 0,
     "layout": {    },
-    "modificationdate": 3867215418,
+    "modificationdate": 3867289136,
     "name": "NDLR-Max",
     "readonly": 0,
     "searchpath": {    },
@@ -243,8 +243,8 @@
     "viewmode": 0,
     "viewrect": [ 25.0, 114.0, 300.0, 500.0 ],
     "category_disclosure": {
-        "code": 0,
+        "media": 0,
         "data": 0,
-        "media": 0
+        "code": 0
     }
 }

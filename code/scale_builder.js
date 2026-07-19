@@ -89,7 +89,8 @@ function mode(v) { setScale(v); }
 function msg_int(v) {
     if (inlet === 0) {
         var newKey = ((Math.round(v) % 12) + 12) % 12;
-        if (newKey === currentKey) return;
+        // Un second clic sur la même tonalité reste un geste musical :
+        // republier la gamme afin de réarticuler l'accord courant.
         currentKey = newKey;
         buildScale();
     } else if (inlet === 1) {

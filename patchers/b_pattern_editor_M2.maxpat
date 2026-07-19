@@ -736,7 +736,7 @@
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 48.0, 101.0, 80.0, 22.0 ],
-                    "text": "size $1"
+                    "text": "steps $1"
                 }
             },
             {
