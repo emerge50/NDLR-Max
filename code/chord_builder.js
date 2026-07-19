@@ -6,7 +6,7 @@
 //   type   [0-8]      : alias historique de color
 // outlet 0 : liste des notes de l'accord (octave centrale)
 // outlet 1 : pool complet sur tout le clavier MIDI (0-127)
-// outlet 2 : rôles des notes — liste de paires [noteClass, role]
+// outlet 2 : centre tonal puis rôles — paires [-1, tonicMidi, noteClass, role...]
 //            role: 0=tonique 1=neuvième 2=tierce 3=quarte 4=quinte 5=sixte 6=septième
 //
 // Couleurs :
@@ -294,7 +294,9 @@ function buildChord() {
     }
 
     // 3. Construire la liste des rôles pour outlet 2
-    var rolesList = [];
+    // La paire reservee -1/tonicMidi voyage avec les rôles afin que le Pad
+    // valide centre tonal, rôles et pool dans la même transaction musicale.
+    var rolesList = [-1, currentScale[0]];
     for (var nc in noteRoles) {
         if (noteRoles.hasOwnProperty(nc)) {
             rolesList.push(parseInt(nc));

@@ -49,7 +49,7 @@ function clearpreview() {
     mgraphics.redraw();
 }
 
-function size(v) {
+function steps(v) {
     sliderCount = Math.max(1, Math.min(16, Math.round(Number(v) || 1)));
     ensureValues();
     if (activeStep > sliderCount) activeStep = 0;

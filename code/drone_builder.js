@@ -145,6 +145,21 @@ function retrigger() {
     playNewNotes();
 }
 
+// Les déclenchements issus de l'horloge sont exécutés en basse priorité afin
+// qu'un changement harmonique arrivé dans le même cycle soit traité d'abord.
+var cadenceRetriggerTask = new Task(function() {
+    if (isRunning) retrigger();
+}, this);
+
+function scheduleCadenceRetrigger() {
+    cadenceRetriggerTask.cancel();
+    cadenceRetriggerTask.schedule(0);
+}
+
+function cancelCadenceRetrigger() {
+    cadenceRetriggerTask.cancel();
+}
+
 // ── Rythme ────────────────────────────────────────────────────────────────────
 
 // Retourne true si le beatCount courant doit déclencher une note
@@ -200,19 +215,19 @@ function beat() {
         if (absoluteTick % quantGrid === 0) {
             currentChord = pendingChord;
             pendingChord = null;
-            retrigger();
+            scheduleCadenceRetrigger();
         }
     }
     if (isSustainMode()) return;
     if (isSpecialChordCadence()) {
         if (shouldTriggerSpecialAtTick(currentTrigger, absoluteTick % DRONE_BAR_TICKS)) {
-            retrigger();
+            scheduleCadenceRetrigger();
         }
         return;
     }
     if (absoluteTick % DRONE_STEP_TICKS === 0) {
         if (shouldTriggerOnBeat(currentTrigger, beatCount)) {
-            retrigger();
+            scheduleCadenceRetrigger();
         }
         beatCount++;
     }
@@ -231,6 +246,7 @@ function start() {
 // Réaligne la phase du drone sur le prochain "beat" (sur Start MIDI de
 // l'horloge maître), comme pour les motifs.
 function resetphase() {
+    cancelCadenceRetrigger();
     beatCount   = 0;
     absoluteTick = 0;
     if (!globalTransportRunning) return;
@@ -247,6 +263,7 @@ function resetphase() {
 }
 
 function stop() {
+    cancelCadenceRetrigger();
     isEnabled   = false;
     isRunning   = false;
     messnamed('mod_input', 'part_active', 'drone', 0);
@@ -264,6 +281,7 @@ function on(v) {
 // Appelé sur Stop MIDI : coupe le son sans changer l'état du bouton on/off
 // (isEnabled), pour pouvoir redémarrer instantanément sur le prochain Start.
 function transportstop() {
+    cancelCadenceRetrigger();
     globalTransportRunning = false;
     isRunning   = false;
     beatCount   = 0;
@@ -285,15 +303,8 @@ function scale() {
     var args = arrayfromargs(arguments).filter(function(x) { return typeof x === "number"; });
     currentScale = args;
     if (isRunning && !isChordMode()) {
-        if (isSustainMode()) {
-            // Sustain : pas de grille rythmique — re-déclencher immédiatement
-            // (note off puis note on), même si la note résultante est
-            // identique à la précédente (ex. on rappuie sur la même touche).
-            retrigger();
-        }
-        // En mode cadence : ne pas re-déclencher hors-grille (ça décalerait
-        // la phase). buildNotes() utilisera currentScale au prochain pas
-        // déclenché par beat()/resetphase().
+        cancelCadenceRetrigger();
+        retrigger();
     }
 }
 
@@ -306,13 +317,10 @@ function chord() {
     }
     currentChord = args;
     if (isRunning && isChordMode()) {
-        if (isSustainMode()) {
-            // Chord sustain : re-déclencher au changement d'accord
-            retrigger();
-        }
-        // En mode cadence : ne pas re-déclencher hors-grille (ça décalerait
-        // la phase par rapport au métronome). Le nouvel accord sera pris en
-        // compte au prochain pas déclenché par beat()/resetphase().
+        cancelCadenceRetrigger();
+        // Un nouvel accord est prioritaire sur la cadence. La quantification
+        // explicite du Pad reste gérée ci-dessus.
+        retrigger();
     }
 }
 
@@ -321,7 +329,10 @@ function pad_quant(v) {
     if (currentPadQuant === 0 && pendingChord) {
         currentChord = pendingChord;
         pendingChord = null;
-        if (isRunning && currentTrigger === 9) retrigger();
+        if (isRunning && currentTrigger === 9) {
+            cancelCadenceRetrigger();
+            retrigger();
+        }
     }
 }
 

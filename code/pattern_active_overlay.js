@@ -20,7 +20,7 @@ function anything() {
             values[activeStep - 1] = activeValue;
             outlet(0, "setminmax", 0, Math.max(1, patternMaximum - 1));
             outlet(0, "signed", 1);
-            outlet(0, "size", patternLength);
+            outlet(0, "steps", patternLength);
             emitActiveBar();
             break;
         case "pattern_set":
@@ -35,7 +35,7 @@ function anything() {
             break;
         case "pattlen":
             patternLength = Math.max(1, Math.min(16, Math.round(Number(args[0]) || 1)));
-            outlet(0, "size", patternLength);
+            outlet(0, "steps", patternLength);
             emitActiveBar();
             break;
         case "pattern_beat":
@@ -61,6 +61,6 @@ function emitActiveBar() {
 function loadbang() {
     outlet(0, "setminmax", 0, Math.max(1, patternMaximum - 1));
     outlet(0, "signed", 1);
-    outlet(0, "size", patternLength);
+    outlet(0, "steps", patternLength);
     emitActiveBar();
 }
